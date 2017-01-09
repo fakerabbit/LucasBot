@@ -19,6 +19,7 @@
 		AC1268121E23338F00F3344B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1268111E23338F00F3344B /* ChatCell.swift */; };
 		ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0ED9E1E2400B700581D4F /* BotMgr.swift */; };
 		ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA11E241CB100581D4F /* Utils.swift */; };
+		ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA31E24400C00581D4F /* ChatInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		AC1268111E23338F00F3344B /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		ACE0ED9E1E2400B700581D4F /* BotMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotMgr.swift; sourceTree = "<group>"; };
 		ACE0EDA11E241CB100581D4F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		ACE0EDA31E24400C00581D4F /* ChatInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInput.swift; sourceTree = "<group>"; };
 		B50B966E5C875AC22C8929AB /* Pods_LucasBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LucasBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE0EDA11E241CB100581D4F /* Utils.swift */,
+				ACE0EDA31E24400C00581D4F /* ChatInput.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */,
 				AC1268121E23338F00F3344B /* ChatCell.swift in Sources */,
 				AC1268101E232FA400F3344B /* DataMgr.swift in Sources */,
+				ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */,
 				AC12680B1E22FED200F3344B /* NetworkMgr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
