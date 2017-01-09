@@ -13,6 +13,12 @@
 		AC1267FB1E22EE2E00F3344B /* LucasBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F91E22EE2E00F3344B /* LucasBot.xcdatamodeld */; };
 		AC1267FD1E22EE2E00F3344B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1267FC1E22EE2E00F3344B /* Assets.xcassets */; };
 		AC1268001E22EE2E00F3344B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1267FE1E22EE2E00F3344B /* LaunchScreen.storyboard */; };
+		AC12680B1E22FED200F3344B /* NetworkMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680A1E22FED200F3344B /* NetworkMgr.swift */; };
+		AC12680D1E2326B000F3344B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680C1E2326B000F3344B /* ChatView.swift */; };
+		AC1268101E232FA400F3344B /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680F1E232FA400F3344B /* DataMgr.swift */; };
+		AC1268121E23338F00F3344B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1268111E23338F00F3344B /* ChatCell.swift */; };
+		ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0ED9E1E2400B700581D4F /* BotMgr.swift */; };
+		ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA11E241CB100581D4F /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +31,12 @@
 		AC1267FC1E22EE2E00F3344B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1267FF1E22EE2E00F3344B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC1268011E22EE2E00F3344B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC12680A1E22FED200F3344B /* NetworkMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMgr.swift; sourceTree = "<group>"; };
+		AC12680C1E2326B000F3344B /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		AC12680F1E232FA400F3344B /* DataMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
+		AC1268111E23338F00F3344B /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		ACE0ED9E1E2400B700581D4F /* BotMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotMgr.swift; sourceTree = "<group>"; };
+		ACE0EDA11E241CB100581D4F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B50B966E5C875AC22C8929AB /* Pods_LucasBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LucasBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,7 +90,13 @@
 		AC1267F11E22EE2D00F3344B /* LucasBot */ = {
 			isa = PBXGroup;
 			children = (
+				ACE0EDA01E241CA600581D4F /* Utils */,
+				ACE0ED9D1E2400AE00581D4F /* BotMgr */,
+				AC12680E1E232F9000F3344B /* DataMgr */,
+				AC1268091E22FEB300F3344B /* NetworkMgr */,
 				AC1267F21E22EE2D00F3344B /* AppDelegate.swift */,
+				AC12680C1E2326B000F3344B /* ChatView.swift */,
+				AC1268111E23338F00F3344B /* ChatCell.swift */,
 				AC1267F41E22EE2D00F3344B /* ViewController.swift */,
 				AC1267FC1E22EE2E00F3344B /* Assets.xcassets */,
 				AC1267FE1E22EE2E00F3344B /* LaunchScreen.storyboard */,
@@ -86,6 +104,38 @@
 				AC1267F91E22EE2E00F3344B /* LucasBot.xcdatamodeld */,
 			);
 			path = LucasBot;
+			sourceTree = "<group>";
+		};
+		AC1268091E22FEB300F3344B /* NetworkMgr */ = {
+			isa = PBXGroup;
+			children = (
+				AC12680A1E22FED200F3344B /* NetworkMgr.swift */,
+			);
+			name = NetworkMgr;
+			sourceTree = "<group>";
+		};
+		AC12680E1E232F9000F3344B /* DataMgr */ = {
+			isa = PBXGroup;
+			children = (
+				AC12680F1E232FA400F3344B /* DataMgr.swift */,
+			);
+			name = DataMgr;
+			sourceTree = "<group>";
+		};
+		ACE0ED9D1E2400AE00581D4F /* BotMgr */ = {
+			isa = PBXGroup;
+			children = (
+				ACE0ED9E1E2400B700581D4F /* BotMgr.swift */,
+			);
+			name = BotMgr;
+			sourceTree = "<group>";
+		};
+		ACE0EDA01E241CA600581D4F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ACE0EDA11E241CB100581D4F /* Utils.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,7 +263,13 @@
 			files = (
 				AC1267FB1E22EE2E00F3344B /* LucasBot.xcdatamodeld in Sources */,
 				AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */,
+				ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */,
+				ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */,
+				AC12680D1E2326B000F3344B /* ChatView.swift in Sources */,
 				AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */,
+				AC1268121E23338F00F3344B /* ChatCell.swift in Sources */,
+				AC1268101E232FA400F3344B /* DataMgr.swift in Sources */,
+				AC12680B1E22FED200F3344B /* NetworkMgr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
