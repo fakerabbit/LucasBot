@@ -53,21 +53,16 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         self.addSubview(collectionView)
         self.addSubview(chatInput)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    /*
-     * MARK:- Layout
-     */
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        chatInput.containerView = collectionView
+        
         let h: CGFloat = self.frame.size.height
         let w: CGFloat = self.frame.size.width
         chatInput.frame = CGRect(x: 0, y: h - chatInput.frame.size.height, width: chatInput.frame.size.width, height: chatInput.frame.size.height)
         collectionView.frame = CGRect(x: 0, y: 0, width: w, height: chatInput.frame.minY)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     /*
