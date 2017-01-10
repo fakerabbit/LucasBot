@@ -20,8 +20,9 @@ class ViewController: UIViewController {
         super.loadView()
         self.view = self.chatView
         chatView.chatInput?.onMessage = { message in
-            debugPrint("user message:")
-            debugPrint(message!)
+            if message != nil {
+                BotMgr.sharedInstance.sendMessage(msg: message!)
+            }
         }
     }
 
@@ -35,9 +36,7 @@ class ViewController: UIViewController {
         BotMgr.sharedInstance.onMessage = { [weak self] message in
             debugPrint("bot manager received message...")
             if message != nil {
-                var messages:[Message]? = self?.chatView.messages
-                messages?.append(message)
-                self?.chatView.messages = messages
+                self?.chatView.newMessage = message
             }
         }
     }

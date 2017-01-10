@@ -19,8 +19,6 @@ class BotMgr {
     func initBot() {
         
         NetworkMgr.sharedInstance.sendMessage(msg: "Hello") { message in
-            debugPrint("got message:")
-            debugPrint(message!)
             if message != nil {
                 self.onMessage(message!)
                 /*DataMgr.sharedInstance.saveMessage(message: message!) { emessage in
@@ -29,5 +27,10 @@ class BotMgr {
                 }*/
             }
         }
+    }
+    
+    func sendMessage(msg: String) {
+        let message = Message(msgId: NSUUID().uuidString, intent: nil, text: msg, dateCreated: Date(), confidence: nil, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId)
+        self.onMessage(message)
     }
 }

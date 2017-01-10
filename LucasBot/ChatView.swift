@@ -15,9 +15,9 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         let frame = self.frame
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0.8
-        layout.minimumInteritemSpacing = 0.8
-        layout.sectionInset = UIEdgeInsetsMake(4.0, 8.0, 8.0, 8.0)
+        //layout.minimumLineSpacing = 0.8
+        //layout.minimumInteritemSpacing = 0.8
+        //layout.sectionInset = UIEdgeInsetsMake(4.0, 8.0, 8.0, 8.0)
         let cv: UICollectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         cv.backgroundColor = self.backgroundColor
         cv.alwaysBounceVertical = true
@@ -34,6 +34,16 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
                 return
             }
             self.collectionView.reloadData()
+        }
+    }
+    
+    var newMessage: Message! {
+        didSet {
+            self.collectionView.performBatchUpdates({
+                let row:Int = self.messages.count
+                self.messages.append(self.newMessage)
+                self.collectionView.insertItems(at: [IndexPath(row: row, section: 0)])
+            }, completion: nil)
         }
     }
     
@@ -82,6 +92,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         let message = self.messages[indexPath.row]
         
         let cell:ChatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "chatCell", for: indexPath) as! ChatCell
+        cell.isUser = message.type == "user" ? true : false
         cell.text = message.text
         
         return cell
@@ -89,14 +100,16 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let message:Message? = messages[indexPath.row]
-        var size = CGSize.zero
+        let pad: CGFloat = 10
+        var size = CGSize(width: collectionView.frame.size.width - pad, height: 10)
         if message != nil {
             if let text: String = message!.text {
                 let label = UITextView(frame: CGRect.zero)
                 label.font = Utils.chatFont()
                 label.text = "> " + text
                 label.sizeToFit()
-                size = label.sizeThatFits(CGSize(width: self.frame.size.width - 20, height: CGFloat.greatestFiniteMagnitude))
+                size = label.sizeThatFits(CGSize(width: collectionView.frame.size.width - pad, height: CGFloat.greatestFiniteMagnitude))
+                size.width = collectionView.frame.size.width - pad
             }
         }
         
