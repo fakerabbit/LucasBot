@@ -24,4 +24,12 @@ struct Utils {
     static func chatFont() -> UIFont {
         return UIFont(name: "Courier", size: 16.0)!
     }
+    
+    static func chatBotColor() -> UIColor {
+        return UIColor(colorLiteralRed: 119/255, green: 222/255, blue: 8/255, alpha: 1.0)
+    }
+    
+    static func chatUserColor() -> UIColor {
+        return UIColor.white
+    }
 }

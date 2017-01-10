@@ -30,7 +30,7 @@ class ChatCell: UICollectionViewCell {
         text = ""
         
         textView.backgroundColor = UIColor.clear
-        textView.textColor = UIColor(colorLiteralRed: 119/255, green: 222/255, blue: 8/255, alpha: 1.0)
+        textView.textColor = Utils.chatBotColor()
         textView.font = Utils.chatFont()
         textView.isScrollEnabled = false
         self.contentView.addSubview(textView)

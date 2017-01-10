@@ -19,6 +19,10 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = self.chatView
+        chatView.chatInput?.onMessage = { message in
+            debugPrint("user message:")
+            debugPrint(message!)
+        }
     }
 
     override func viewDidLoad() {

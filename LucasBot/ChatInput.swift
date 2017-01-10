@@ -24,23 +24,51 @@ class ChatInput: UIView, UITextFieldDelegate {
         }
     }
     
-    lazy var input: UITextField! = {
-        let textfield = UITextField(frame: CGRect.zero)
+    lazy var input: ChatTextField! = {
+        let textfield = ChatTextField(frame: CGRect.zero)
+        textfield.delegate = self
+        textfield.textColor = Utils.chatUserColor()
+        textfield.returnKeyType = .go
+        textfield.placeholder = "Type here..."
         return textfield
     }()
     
     var isKeyboardShowing: Bool = false,
         keyboardFrame: CGRect = CGRect.zero
     
+    lazy var lineIv: UIImageView! = {
+        if let image = UIImage(named: "inputLine") {
+            let imageView = UIImageView(image: image.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: image.size.width/2, bottom: 0, right: image.size.width/2), resizingMode: .tile))
+            //imageView.contentMode = .scaleAspectFill
+            //imageView.autoresizingMask = .flexibleWidth
+            return imageView
+        }
+        return UIImageView()
+    }()
+    
+    lazy var carot: UILabel! = {
+       let label = UILabel(frame: CGRect.zero)
+        label.textColor = Utils.chatBotColor()
+        label.font = Utils.chatFont()
+        label.text = ">"
+        label.sizeToFit()
+        return label
+    }()
+    
+    typealias ChatInputOnMessage = (String?) -> Void
+    var onMessage: ChatInputOnMessage = { message in }
+    
     // MARK:- Init
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kChatInputHeight))
-        self.backgroundColor = UIColor.yellow
+        self.backgroundColor = UIColor.clear
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidChangeStatusBarNotification(notification:)), name: .UIApplicationWillChangeStatusBarFrame, object: nil)
         
+        self.addSubview(carot)
+        self.addSubview(lineIv)
         self.addSubview(input)
     }
     
@@ -53,7 +81,11 @@ class ChatInput: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         let w: CGFloat = self.frame.size.width
         let h: CGFloat = self.frame.size.height
+        let pad: CGFloat = 30.0
+        let lineH: CGFloat = lineIv.frame.size.height
         input.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        carot.frame = CGRect(x: pad/2, y: h/2 - carot.frame.size.height/2, width: carot.frame.size.width, height: carot.frame.size.height)
+        lineIv.frame = CGRect(x: pad, y: h - (10 + lineH), width: w - pad * 2, height: lineH)
     }
     
     // MARK:- Keyboard notifications
@@ -98,5 +130,14 @@ class ChatInput: UIView, UITextFieldDelegate {
             self.frame.origin = CGPoint(x: 0, y: (self.superview?.frame.size.height)! - kChatInputHeight)
         }
         containerView.frame.size = CGSize(width: containerView.frame.size.width, height: self.frame.minY)
+    }
+    
+    // MARK:- UITextFieldDelegate methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.onMessage(textField.text)
+        textField.text = ""
+        return true
     }
 }
