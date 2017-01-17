@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Wit
 
-class ViewController: UIViewController {
+class ViewController: BotViewController {
     
     lazy var chatView:ChatView! = {
         let frame = UIScreen.main.bounds

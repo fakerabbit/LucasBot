@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Wit
 
 class BotMgr {
     
@@ -23,7 +22,7 @@ class BotMgr {
     }
     
     func sendMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, intent: nil, text: msg, dateCreated: Date(), confidence: nil, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId)
         self.onMessage(message)
         self.sendMessageToBot(message: msg)
     }

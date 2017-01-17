@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.darkGray
         
-        // Create main VC.
-        let vc = ViewController()
-        window?.rootViewController = vc
+        let vc = LoginVC()
+        let nav:NavController = NavController(rootViewController: vc)
+        window?.rootViewController = nav
         
         if !window!.isKeyWindow {
             window!.makeKeyAndVisible()

@@ -41,8 +41,8 @@ class NetworkMgr {
                     text = txt
                     type = "msg"
                 }
-                let dateCreated = Date()
-                message = Message(msgId: msgId, intent: "", text: text, dateCreated: dateCreated, confidence: 1.0, type: type, sessionId: self?.sessionId)
+                //let dateCreated = Date()
+                message = Message(msgId: msgId, text: text, type: type, sessionId: self?.sessionId)
             }
             callback(message)
         }

@@ -21,6 +21,14 @@
 		ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA11E241CB100581D4F /* Utils.swift */; };
 		ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA31E24400C00581D4F /* ChatInput.swift */; };
 		ACE0EDA61E2485FA00581D4F /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA51E2485FA00581D4F /* ChatTextField.swift */; };
+		ACFB9A4A1E2D975900A164A1 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A491E2D975900A164A1 /* LoginVC.swift */; };
+		ACFB9A4C1E2D976000A164A1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A4B1E2D976000A164A1 /* LoginView.swift */; };
+		ACFB9A531E2DB7BE00A164A1 /* AlphabetPony-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */; };
+		ACFB9A551E2DB7C500A164A1 /* Andrea-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */; };
+		ACFB9A571E2DB7E300A164A1 /* typing.gif in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A561E2DB7E300A164A1 /* typing.gif */; };
+		ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A591E2DC1C900A164A1 /* NavController.swift */; };
+		ACFB9A5C1E2DC30800A164A1 /* BotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A5B1E2DC30800A164A1 /* BotViewController.swift */; };
+		ACFB9A5E1E2DD38D00A164A1 /* RedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +49,14 @@
 		ACE0EDA11E241CB100581D4F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ACE0EDA31E24400C00581D4F /* ChatInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInput.swift; sourceTree = "<group>"; };
 		ACE0EDA51E2485FA00581D4F /* ChatTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
+		ACFB9A491E2D975900A164A1 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		ACFB9A4B1E2D976000A164A1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AlphabetPony-Regular.otf"; path = "Assets/Fonts/AlphabetPony-Regular.otf"; sourceTree = "<group>"; };
+		ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Andrea-Normal.otf"; path = "Assets/Fonts/Andrea-Normal.otf"; sourceTree = "<group>"; };
+		ACFB9A561E2DB7E300A164A1 /* typing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = typing.gif; path = Assets/typing.gif; sourceTree = "<group>"; };
+		ACFB9A591E2DC1C900A164A1 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		ACFB9A5B1E2DC30800A164A1 /* BotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotViewController.swift; sourceTree = "<group>"; };
+		ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedTextField.swift; sourceTree = "<group>"; };
 		B50B966E5C875AC22C8929AB /* Pods_LucasBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LucasBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,6 +110,9 @@
 		AC1267F11E22EE2D00F3344B /* LucasBot */ = {
 			isa = PBXGroup;
 			children = (
+				ACFB9A4D1E2DB1AD00A164A1 /* Assets */,
+				ACFB9A581E2DC1B100A164A1 /* Navigation */,
+				ACFB9A481E2D973700A164A1 /* Login */,
 				ACE0EDA01E241CA600581D4F /* Utils */,
 				ACE0ED9D1E2400AE00581D4F /* BotMgr */,
 				AC12680E1E232F9000F3344B /* DataMgr */,
@@ -140,8 +159,37 @@
 				ACE0EDA11E241CB100581D4F /* Utils.swift */,
 				ACE0EDA31E24400C00581D4F /* ChatInput.swift */,
 				ACE0EDA51E2485FA00581D4F /* ChatTextField.swift */,
+				ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		ACFB9A481E2D973700A164A1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				ACFB9A491E2D975900A164A1 /* LoginVC.swift */,
+				ACFB9A4B1E2D976000A164A1 /* LoginView.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		ACFB9A4D1E2DB1AD00A164A1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				ACFB9A561E2DB7E300A164A1 /* typing.gif */,
+				ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */,
+				ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		ACFB9A581E2DC1B100A164A1 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				ACFB9A591E2DC1C900A164A1 /* NavController.swift */,
+				ACFB9A5B1E2DC30800A164A1 /* BotViewController.swift */,
+			);
+			name = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC1268001E22EE2E00F3344B /* LaunchScreen.storyboard in Resources */,
+				ACFB9A571E2DB7E300A164A1 /* typing.gif in Resources */,
+				ACFB9A551E2DB7C500A164A1 /* Andrea-Normal.otf in Resources */,
+				ACFB9A531E2DB7BE00A164A1 /* AlphabetPony-Regular.otf in Resources */,
 				AC1267FD1E22EE2E00F3344B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,14 +319,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC1267FB1E22EE2E00F3344B /* LucasBot.xcdatamodeld in Sources */,
+				ACFB9A5E1E2DD38D00A164A1 /* RedTextField.swift in Sources */,
+				ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */,
 				ACE0EDA61E2485FA00581D4F /* ChatTextField.swift in Sources */,
+				ACFB9A4A1E2D975900A164A1 /* LoginVC.swift in Sources */,
 				AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */,
+				ACFB9A5C1E2DC30800A164A1 /* BotViewController.swift in Sources */,
 				ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */,
 				ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */,
 				AC12680D1E2326B000F3344B /* ChatView.swift in Sources */,
 				AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */,
 				AC1268121E23338F00F3344B /* ChatCell.swift in Sources */,
 				AC1268101E232FA400F3344B /* DataMgr.swift in Sources */,
+				ACFB9A4C1E2D976000A164A1 /* LoginView.swift in Sources */,
 				ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */,
 				AC12680B1E22FED200F3344B /* NetworkMgr.swift in Sources */,
 			);

@@ -57,7 +57,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
      */
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.init(colorLiteralRed: 28/255, green: 35/255, blue: 41/255, alpha: 1.0)
+        self.backgroundColor = Utils.backgroundColor()
         
         messages = []
         

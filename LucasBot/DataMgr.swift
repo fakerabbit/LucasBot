@@ -9,14 +9,14 @@
 import Foundation
 import CoreData
 
-/// Message: the Message model
+struct User {
+    var email: String = ""
+    var name: String?
+}
+
 struct Message {
-    
     var msgId: String = NSUUID().uuidString
-    var intent: String?
     var text: String?
-    var dateCreated: Date?
-    var confidence: Float?
     var type: String?
     var sessionId: String?
 }
@@ -26,31 +26,64 @@ class DataMgr {
     /// sharedInstance: the DataMgr singleton
     static let sharedInstance = DataMgr()
     
-    static let kMessageEntityName = "EMessage"
+    static let kUserEntityName = "EUser"
     
-    typealias DataMgrCallback = (EMessage?) -> Void
+    typealias DataMgrCallback = (EUser?) -> Void
     
-    func storeWitMessage(message: Message, callback: @escaping DataMgrCallback) {
+    func initStore() -> Bool {
+        var login:Bool = false
+        let eUser:EUser? = self.getUser()
+        if eUser == nil {
+            login = true
+        }
+        return login
+    }
+    
+    func storeUser(email: String, callback: @escaping DataMgrCallback) {
         
-        saveMessage(message: message, callback: callback)
+        let user:User = User(email: email, name: nil)
+        saveUser(user: user, callback: callback)
     }
     
     // MARK: - Core Data stack
     
-    func saveMessage(message: Message, callback: @escaping DataMgrCallback) {
+    func saveUser(user: User, callback: @escaping DataMgrCallback) {
         
-        var eMessage: EMessage?
-        eMessage = NSEntityDescription.insertNewObject(forEntityName: DataMgr.kMessageEntityName, into: self.managedObjectContext) as? EMessage
-        if eMessage != nil {
-            eMessage?.msgId = message.msgId
-            eMessage?.dateCreated = message.dateCreated as NSDate?
-            eMessage?.text = message.text
-            eMessage?.intent = message.intent
-            eMessage?.confidence = message.confidence!
-            eMessage?.type = message.type
-            eMessage?.sessionId = message.sessionId
+        var eUser: EUser? = self.getUser()
+        
+        if eUser == nil {
+            eUser = NSEntityDescription.insertNewObject(forEntityName: DataMgr.kUserEntityName, into: self.managedObjectContext) as? EUser
         }
-        callback(eMessage)
+        
+        eUser?.email = user.email
+        eUser?.name = user.name
+        
+        callback(eUser)
+    }
+    
+    func fetchUser() -> User? {
+        
+        var user:User?
+        let eUser:EUser? = self.getUser()
+        if eUser != nil && eUser?.email != nil {
+            user = User(email: (eUser?.email)!, name: eUser?.name)
+        }
+        return user
+    }
+    
+    private func getUser() -> EUser? {
+        let request:NSFetchRequest<EUser> = EUser.fetchRequest()
+        var eUser: EUser?
+        var results:[EUser]?
+        do {
+            results = try self.managedObjectContext.fetch(request)
+            if (results?.count)! > 0 {
+                eUser = results?.first
+            }
+        } catch let error {
+            debugPrint("error fetching user: \(error.localizedDescription)")
+        }
+        return eUser
     }
     
     lazy var managedObjectContext: NSManagedObjectContext = {
