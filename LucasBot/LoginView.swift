@@ -14,7 +14,7 @@ class LoginView: UIView, UITextFieldDelegate {
     
     typealias LoginViewCallback = (Bool) -> Void
     
-    typealias LoginViewOnSignUp = (String?) -> Void
+    typealias LoginViewOnSignUp = (String?, String?) -> Void
     var onSignUp: LoginViewOnSignUp = { email in }
     
     lazy var lucas:UILabel! = {
@@ -48,6 +48,17 @@ class LoginView: UIView, UITextFieldDelegate {
         let textfield = RedTextField(frame: CGRect.zero)
         textfield.delegate = self
         textfield.placeholder = "Sign up with your email..."
+        textfield.keyboardType = .emailAddress
+        textfield.tag = 0
+        return textfield
+    }()
+    
+    lazy var passwordInput: RedTextField! = {
+        let textfield = RedTextField(frame: CGRect.zero)
+        textfield.delegate = self
+        textfield.placeholder = "Enter a password..."
+        textfield.tag = 1
+        textfield.isSecureTextEntry = true
         return textfield
     }()
     
@@ -94,10 +105,12 @@ class LoginView: UIView, UITextFieldDelegate {
     func animateSignUp() {
         
         self.addSubview(signUpInput)
+        self.addSubview(passwordInput)
         let w: CGFloat = self.frame.size.width
         let h: CGFloat = self.frame.size.height
         let pad: CGFloat = 20.0
         signUpInput.frame = CGRect(x: pad, y: h, width: w - pad * 2, height: 50)
+        passwordInput.frame = CGRect(x: pad, y: h, width: w - pad * 2, height: 50)
 
         UIView.animate(withDuration: 2.0, animations: {
             
@@ -105,14 +118,28 @@ class LoginView: UIView, UITextFieldDelegate {
             self.signUpInput.frame = CGRect(x: pad, y: self.bot.frame.maxY + 30, width: w - pad * 2, height: 50)
             
         }, completion: { finished in
+            UIView.animate(withDuration: 1.0, animations: {
+                
+                self.passwordInput.frame = CGRect(x: pad, y: self.signUpInput.frame.maxY + 20, width: w - pad * 2, height: 50)
+                
+            }, completion: { finished in
+            })
         })
     }
     
     // MARK:- UITextFieldDelegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
-        self.onSignUp(textField.text)
+        
+        if textField.tag == 0 {
+            self.passwordInput.becomeFirstResponder()
+        }
+        else if textField.tag == 1 {
+            self.onSignUp(self.signUpInput.text, self.passwordInput.text)
+        }
+        
         return true
     }
 }

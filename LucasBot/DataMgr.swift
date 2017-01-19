@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftKeychainWrapper
 
 struct User {
     var email: String = ""
@@ -19,6 +20,15 @@ struct Message {
     var text: String?
     var type: String?
     var sessionId: String?
+}
+
+enum Keys:String {
+    case email
+    case password
+    case name
+    case secret
+    case clientId
+    case token
 }
 
 class DataMgr {
@@ -39,10 +49,46 @@ class DataMgr {
         return login
     }
     
-    func storeUser(email: String, callback: @escaping DataMgrCallback) {
+    func storeUser(email: String, password: String, callback: @escaping DataMgrCallback) {
         
-        let user:User = User(email: email, name: nil)
-        saveUser(user: user, callback: callback)
+        if DataMgr.sharedInstance.storeKey(key: Keys.email.rawValue, value: email) &&
+            DataMgr.sharedInstance.storeKey(key: Keys.password.rawValue, value: password) {
+            let user:User = User(email: email, name: nil)
+            saveUser(user: user, callback: callback)
+        }
+        else {
+            callback(nil)
+        }
+    }
+    
+    func storeUserBearer(email: String, callback: @escaping DataMgrCallback) {
+        if DataMgr.sharedInstance.storeKey(key: Keys.secret.rawValue, value: NSUUID().uuidString) &&
+            DataMgr.sharedInstance.storeKey(key: Keys.clientId.rawValue, value: NSUUID().uuidString) &&
+            DataMgr.sharedInstance.storeKey(key: Keys.name.rawValue, value: "iOS-" + NSUUID().uuidString) {
+            let user:User = User(email: email, name: nil)
+            saveUser(user: user, callback: callback)
+        }
+        else {
+            callback(nil)
+        }
+    }
+    
+    // MARK:- Keychain
+    
+    func storeKey(key: String, value: String) -> Bool {
+        return KeychainWrapper.standard.set(value, forKey: key)
+    }
+    
+    func getKey(key: String) -> String? {
+        return KeychainWrapper.standard.string(forKey: key)
+    }
+    
+    func removeKey(key: String) -> Bool {
+        return KeychainWrapper.standard.removeObject(forKey: key)
+    }
+    
+    func removeAllKeys() -> Bool {
+        return KeychainWrapper.standard.removeAllKeys()
     }
     
     // MARK: - Core Data stack
@@ -57,6 +103,7 @@ class DataMgr {
         
         eUser?.email = user.email
         eUser?.name = user.name
+        self.saveContext()
         
         callback(eUser)
     }

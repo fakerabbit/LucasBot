@@ -28,11 +28,21 @@ class LoginVC: BotViewController {
         loginView.animateLogo(callback: { [weak self] finished in
             self?.checkStore()
         })
-        loginView.onSignUp = { email in
+        loginView.onSignUp = { email, password in
             
-            if email != nil {
-                let vc = ViewController()
-                self.nav?.viewControllers = [vc]
+            if email != nil && password != nil {
+                BotMgr.sharedInstance.signUp(email: email!, password: password!) { result in
+                    
+                    if result {
+                        debugPrint("sign up SUCCESS")
+                        let vc = ViewController()
+                        self.nav?.viewControllers = [vc]
+                    }
+                    else {
+                        //show error message to user
+                        debugPrint("error occurred during sign up...")
+                    }
+                }
             }
         }
     }

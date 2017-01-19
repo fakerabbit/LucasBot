@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.2.0)
+  - SwiftKeychainWrapper (3.0.1)
   - SwiftyGif (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.2)
+  - SwiftKeychainWrapper
   - SwiftyGif
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwiftyGif: d6b4d63de2a2a5134d8b54ba5719837319d77ef0
 
-PODFILE CHECKSUM: c47d49c91a69e82c4cba36a708663e48fbb5999a
+PODFILE CHECKSUM: f65c1f1473e29711325be09e7670fe13ba49754c
 
 COCOAPODS: 1.1.1

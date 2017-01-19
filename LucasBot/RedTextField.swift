@@ -18,6 +18,9 @@ class RedTextField: UITextField {
         self.textColor = Utils.chatUserColor()
         self.returnKeyType = .go
         self.backgroundColor = Utils.redColor()
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .none
+        self.keyboardType = .asciiCapable
         self.layer.cornerRadius = 24.0;
         self.layer.masksToBounds = false;
     }

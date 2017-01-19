@@ -4,4 +4,5 @@ use_frameworks!
 target 'LucasBot' do
     pod 'Alamofire', '~> 4.2'
     pod 'SwiftyGif'
+    pod 'SwiftKeychainWrapper'
 end
