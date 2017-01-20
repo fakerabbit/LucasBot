@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SocketIO
 
 class NetworkMgr {
     
@@ -20,6 +21,7 @@ class NetworkMgr {
     
     /// sharedInstance: the NetworkMgr singleton
     static let sharedInstance = NetworkMgr()
+    static let socket = SocketIOClient(socketURL: URL(string: "http://localhost:3000")!, config: [.log(false), .forcePolling(true)])
     
     let sessionId: String = NSUUID().uuidString
     
@@ -28,8 +30,30 @@ class NetworkMgr {
     typealias NetworkMgrResCallback = (DataResponse<Any>?) -> Void
     typealias NetworkMgrStringCallback = (DataResponse<String>?) -> Void
     
+    // MARK:- SOCKET API
+    
+    func initSocket() {
+        
+        NetworkMgr.socket.on("connect") {data, ack in
+            debugPrint("socket connected")
+        }
+        
+        NetworkMgr.socket.on(DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!) { data, ack in
+            
+            debugPrint("socket on data...")
+            debugPrint(data)
+            if let msg = data[0] as? String {
+                BotMgr.sharedInstance.sendSocketMessage(msg: msg as String)
+            }
+        }
+        
+        NetworkMgr.socket.connect()
+    }
+    
+    // MARK:- REST API
+    
     /// sendMessage(msg: String): Sends a message to Wit
-    func sendMessage(msg: String, callback: @escaping NetworkMgrCallback) {
+    func sendMessage(msg: String, callback: @escaping NetworkMgrReqCallback) {
         
         let msgUrl = MESSAGE_API_URL + msg.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         var headers: HTTPHeaders = [:]
@@ -37,26 +61,14 @@ class NetworkMgr {
             headers[authorizationHeader.key] = authorizationHeader.value
         }
         
-        Alamofire.request(msgUrl, headers: headers).responseJSON { [weak self] response in
+        Alamofire.request(msgUrl, headers: headers).response { response in
             debugPrint("got response from Wit:")
-            debugPrint(response)
-            var message: Message?
-            if let value = response.result.value {
-                debugPrint(value)
-                let msgId: String = NSUUID().uuidString
-                var type: String?
-                if let tp:String = (value as! NSDictionary).object(forKey: "type") as! String? {
-                    type = tp
-                }
-                var text: String?
-                if let txt:String = (value as! NSDictionary).object(forKey: "msg") as! String? {
-                    text = txt
-                    type = "msg"
-                }
-                //let dateCreated = Date()
-                message = Message(msgId: msgId, text: text, type: type, sessionId: self?.sessionId)
+            //debugPrint(response)
+            var res: String?
+            if response.error == nil {
+                res = "success"
             }
-            callback(message)
+            callback(res)
         }
     }
     

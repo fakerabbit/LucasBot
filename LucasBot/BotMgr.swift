@@ -19,6 +19,7 @@ class BotMgr {
     var onMessage: BotMgrOnMessage = { message in }
     
     func initBot() {
+        NetworkMgr.sharedInstance.initSocket()
         self.sendMessageToBot(message: "Hello")
         //Wit.sharedInstance().interpretString("Hello", customData: nil)
     }
@@ -27,6 +28,11 @@ class BotMgr {
         let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId)
         self.onMessage(message)
         self.sendMessageToBot(message: msg)
+    }
+    
+    func sendSocketMessage(msg: String) {
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId)
+        self.onMessage(message)
     }
     
     func signUp(email: String, password: String, callback: @escaping BotMgrSignUpCallback) {
@@ -166,11 +172,14 @@ class BotMgr {
     private func sendMessageToBot(message: String) {
         NetworkMgr.sharedInstance.sendMessage(msg: message) { message in
             if message != nil {
-                self.processBotResponse(message: message!)
+                //self.processBotResponse(message: message!)
                 /*DataMgr.sharedInstance.saveMessage(message: message!) { emessage in
                  debugPrint("saved message...")
                  self.onMessage(message!)
                  }*/
+            }
+            else {
+                debugPrint("failed sendMessageToBot")
             }
         }
     }
