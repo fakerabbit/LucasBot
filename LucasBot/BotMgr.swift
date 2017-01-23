@@ -19,6 +19,8 @@ class BotMgr {
     var onMessage: BotMgrOnMessage = { message in }
     
     func initBot() {
+        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil)
+        self.onMessage(message)
         NetworkMgr.sharedInstance.initSocket() { connected in
             if connected == true {
                 let message:String = DataMgr.sharedInstance.getKey(key: Keys.name.rawValue) != nil ? "Hi" : "Hello"
@@ -29,13 +31,18 @@ class BotMgr {
     }
     
     func sendMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil)
         self.onMessage(message)
         self.sendMessageToBot(message: msg)
     }
     
     func sendSocketMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil)
+        self.onMessage(message)
+    }
+    
+    func sendSocketImage(imgUrl: String) {
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl)
         self.onMessage(message)
     }
     

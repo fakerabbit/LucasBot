@@ -6,4 +6,5 @@ target 'LucasBot' do
     pod 'SwiftyGif'
     pod 'SwiftKeychainWrapper'
     pod 'Socket.IO-Client-Swift', '~> 8.2.0'
+    pod 'SDWebImage', '~>3.7'
 end

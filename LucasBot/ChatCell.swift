@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class ChatCell: UICollectionViewCell {
     
@@ -21,6 +22,7 @@ class ChatCell: UICollectionViewCell {
                 textView.textColor = Utils.chatBotColor()
                 textView.textAlignment = .left
             }
+            self.setNeedsLayout()
         }
     }
     
@@ -36,11 +38,28 @@ class ChatCell: UICollectionViewCell {
                     textView.text = "> " + text
                     textView.sizeToFit()
                 }
+                self.imageView.image = nil
+            }
+        }
+    }
+    
+    var imgUrl:String! {
+        didSet {
+            if imgUrl != nil {
+                SDWebImageManager.shared().downloadImage(with: URL(string: imgUrl), options: .retryFailed, progress: nil) { [weak self] (image, error, cacheType, finished, imageUrl) in
+                    if let s = self {
+                        if let img = image {
+                            s.imageView.image = img
+                        }
+                    }
+                }
+                self.textView.text = ""
             }
         }
     }
     
     private let textView: UITextView = UITextView(frame: CGRect.zero)
+    private let imageView: UIImageView = UIImageView(frame: CGRect.zero)
     
     // MARK:- Init
     override init(frame: CGRect){
@@ -55,6 +74,11 @@ class ChatCell: UICollectionViewCell {
         textView.isUserInteractionEnabled = false
         self.contentView.addSubview(textView)
         
+        imageView.backgroundColor = UIColor.clear
+        imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = false
+        self.contentView.addSubview(imageView)
+        
         isUser = false
         text = ""
     }
@@ -66,6 +90,9 @@ class ChatCell: UICollectionViewCell {
     // MARK:- Layout
     override func layoutSubviews() {
         super.layoutSubviews()
-        textView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+        let w:CGFloat = self.frame.size.width
+        let h:CGFloat = self.frame.size.height
+        textView.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        imageView.frame = CGRect(x: 0, y: 0, width: w, height: h)
     }
 }

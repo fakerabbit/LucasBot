@@ -20,6 +20,7 @@ struct Message {
     var text: String?
     var type: String?
     var sessionId: String?
+    var imgUrl: String?
 }
 
 enum Keys:String {

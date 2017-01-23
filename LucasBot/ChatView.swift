@@ -100,6 +100,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         let cell:ChatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "chatCell", for: indexPath) as! ChatCell
         cell.isUser = message.type == "user" ? true : false
         cell.text = message.text
+        cell.imgUrl = message.imgUrl
         
         return cell
     }
@@ -109,7 +110,10 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         let pad: CGFloat = 10
         var size = CGSize(width: collectionView.frame.size.width - pad, height: 10)
         if message != nil {
-            if let text: String = message!.text {
+            if let _: String = message!.imgUrl {
+                size = CGSize(width: collectionView.frame.size.width - pad, height: 250)
+            }
+            else if let text: String = message!.text {
                 let label = UITextView(frame: CGRect.zero)
                 label.font = Utils.chatFont()
                 label.text = "> " + text

@@ -47,6 +47,11 @@ class NetworkMgr {
             if let msg = data[0] as? String {
                 BotMgr.sharedInstance.sendSocketMessage(msg: msg as String)
             }
+            else if let obj = data[0] as? NSDictionary {
+                if let imgUrl = obj.object(forKey: "imgUrl") as? String {
+                    BotMgr.sharedInstance.sendSocketImage(imgUrl: imgUrl as String)
+                }
+            }
         }
         
         NetworkMgr.socket.connect()
