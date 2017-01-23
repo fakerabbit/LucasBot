@@ -21,7 +21,7 @@ class NetworkMgr {
     
     /// sharedInstance: the NetworkMgr singleton
     static let sharedInstance = NetworkMgr()
-    static let socket = SocketIOClient(socketURL: URL(string: "http://localhost:3000")!, config: [.log(false), .forcePolling(true)])
+    static let socket = SocketIOClient(socketURL: URL(string: "http://localhost:3000/")!, config: [.log(false), .forcePolling(true)])
     
     let sessionId: String = NSUUID().uuidString
     
@@ -29,13 +29,15 @@ class NetworkMgr {
     typealias NetworkMgrReqCallback = (String?) -> Void
     typealias NetworkMgrResCallback = (DataResponse<Any>?) -> Void
     typealias NetworkMgrStringCallback = (DataResponse<String>?) -> Void
+    typealias NetworkMgrSocketCallback = (Bool) -> Void
     
     // MARK:- SOCKET API
     
-    func initSocket() {
+    func initSocket(callback: @escaping NetworkMgrSocketCallback) {
         
         NetworkMgr.socket.on("connect") {data, ack in
             debugPrint("socket connected")
+            callback(true)
         }
         
         NetworkMgr.socket.on(DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!) { data, ack in

@@ -19,9 +19,13 @@ class BotMgr {
     var onMessage: BotMgrOnMessage = { message in }
     
     func initBot() {
-        NetworkMgr.sharedInstance.initSocket()
-        self.sendMessageToBot(message: "Hello")
-        //Wit.sharedInstance().interpretString("Hello", customData: nil)
+        NetworkMgr.sharedInstance.initSocket() { connected in
+            if connected == true {
+                let message:String = DataMgr.sharedInstance.getKey(key: Keys.name.rawValue) != nil ? "Hi" : "Hello"
+                self.sendMessageToBot(message: message)
+                //Wit.sharedInstance().interpretString("Hello", customData: nil)
+            }
+        }
     }
     
     func sendMessage(msg: String) {

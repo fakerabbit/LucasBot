@@ -52,6 +52,7 @@ class ChatCell: UICollectionViewCell {
         textView.font = Utils.chatFont()
         textView.isScrollEnabled = false
         textView.textAlignment = .left
+        textView.isUserInteractionEnabled = false
         self.contentView.addSubview(textView)
         
         isUser = false

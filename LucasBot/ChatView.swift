@@ -43,7 +43,13 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
                 let row:Int = self.messages.count
                 self.messages.append(self.newMessage)
                 self.collectionView.insertItems(at: [IndexPath(row: row, section: 0)])
-            }, completion: nil)
+            }, completion: { finished in
+                var row:Int = self.messages.count - 1
+                if row < 0 {
+                    row = 0
+                }
+                self.collectionView.scrollToItem(at: IndexPath(row: row, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
+            })
         }
     }
     
