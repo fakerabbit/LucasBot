@@ -46,7 +46,8 @@ class ChatCell: UICollectionViewCell {
     var imgUrl:String! {
         didSet {
             if imgUrl != nil {
-                SDWebImageManager.shared().downloadImage(with: URL(string: imgUrl), options: .retryFailed, progress: nil) { [weak self] (image, error, cacheType, finished, imageUrl) in
+                let secureUrl = imgUrl.replacingOccurrences(of: "http:", with: "https:")
+                SDWebImageManager.shared().downloadImage(with: URL(string: secureUrl), options: .retryFailed, progress: nil) { [weak self] (image, error, cacheType, finished, imageUrl) in
                     if let s = self {
                         if let img = image {
                             s.imageView.image = img
