@@ -51,6 +51,11 @@ class NetworkMgr {
                 if let imgUrl = obj.object(forKey: "imgUrl") as? String {
                     BotMgr.sharedInstance.sendSocketImage(imgUrl: imgUrl as String)
                 }
+                else if let giphy = obj.object(forKey: "giphy") as? String {
+                    let width = obj.object(forKey: "width") as? String
+                    let height = obj.object(forKey: "height") as? String
+                    BotMgr.sharedInstance.sendSocketGif(url: giphy, width: width!, height: height!)
+                }
             }
         }
         

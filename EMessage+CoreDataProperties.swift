@@ -2,7 +2,7 @@
 //  EMessage+CoreDataProperties.swift
 //  
 //
-//  Created by Mirko Justiniano on 1/16/17.
+//  Created by Mirko Justiniano on 1/25/17.
 //
 //  This file was automatically generated and should not be edited.
 //

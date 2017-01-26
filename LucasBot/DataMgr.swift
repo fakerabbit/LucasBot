@@ -21,6 +21,9 @@ struct Message {
     var type: String?
     var sessionId: String?
     var imgUrl: String?
+    var giphy: String?
+    var width: String?
+    var height: String?
 }
 
 enum Keys:String {

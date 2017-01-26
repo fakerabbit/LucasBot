@@ -19,30 +19,34 @@ class BotMgr {
     var onMessage: BotMgrOnMessage = { message in }
     
     func initBot() {
-        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil)
         self.onMessage(message)
         NetworkMgr.sharedInstance.initSocket() { connected in
             if connected == true {
-                let message:String = DataMgr.sharedInstance.getKey(key: Keys.name.rawValue) != nil ? "Hi" : "Hello"
-                self.sendMessageToBot(message: message)
+                self.sendMessageToBot(message: "Hello")
                 //Wit.sharedInstance().interpretString("Hello", customData: nil)
             }
         }
     }
     
     func sendMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil)
         self.onMessage(message)
         self.sendMessageToBot(message: msg)
     }
     
     func sendSocketMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil)
         self.onMessage(message)
     }
     
     func sendSocketImage(imgUrl: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl, giphy: nil, width: nil, height: nil)
+        self.onMessage(message)
+    }
+    
+    func sendSocketGif(url: String, width: String, height: String) {
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: url, width: width, height: height)
         self.onMessage(message)
     }
     

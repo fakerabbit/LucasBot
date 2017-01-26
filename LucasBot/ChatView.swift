@@ -101,6 +101,14 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.isUser = message.type == "user" ? true : false
         cell.text = message.text
         cell.imgUrl = message.imgUrl
+        cell.gifUrl = message.giphy
+        if let width: String = message.width {
+            let w = NumberFormatter().number(from: width)!.floatValue
+            cell.gifWidth = CGFloat(w)
+        }
+        else {
+            cell.gifWidth = 0
+        }
         
         return cell
     }
@@ -112,6 +120,10 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         if message != nil {
             if let _: String = message!.imgUrl {
                 size = CGSize(width: collectionView.frame.size.width - pad, height: 250)
+            }
+            else if let height: String = message!.height {
+                let h = NumberFormatter().number(from: height)!.floatValue
+                size = CGSize(width: collectionView.frame.size.width - pad, height: CGFloat(h))
             }
             else if let text: String = message!.text {
                 let label = UITextView(frame: CGRect.zero)
