@@ -17,6 +17,8 @@
 		AC12680D1E2326B000F3344B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680C1E2326B000F3344B /* ChatView.swift */; };
 		AC1268101E232FA400F3344B /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680F1E232FA400F3344B /* DataMgr.swift */; };
 		AC1268121E23338F00F3344B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1268111E23338F00F3344B /* ChatCell.swift */; };
+		AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A471E400CC700024F40 /* ChatTextView.swift */; };
+		AC646A4A1E40182C00024F40 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A491E40182C00024F40 /* Avatar.swift */; };
 		ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0ED9E1E2400B700581D4F /* BotMgr.swift */; };
 		ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA11E241CB100581D4F /* Utils.swift */; };
 		ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA31E24400C00581D4F /* ChatInput.swift */; };
@@ -34,7 +36,7 @@
 /* Begin PBXFileReference section */
 		26C5C08354695B600C484205 /* Pods-LucasBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucasBot/Pods-LucasBot.debug.xcconfig"; sourceTree = "<group>"; };
 		8ECE106FD0019094AB64ABF3 /* Pods-LucasBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-LucasBot/Pods-LucasBot.release.xcconfig"; sourceTree = "<group>"; };
-		AC1267EF1E22EE2D00F3344B /* LucasBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LucasBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1267EF1E22EE2D00F3344B /* TriviaBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriviaBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1267F21E22EE2D00F3344B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC1267F41E22EE2D00F3344B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC1267FA1E22EE2E00F3344B /* LucasBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LucasBot.xcdatamodel; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		AC12680C1E2326B000F3344B /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AC12680F1E232FA400F3344B /* DataMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
 		AC1268111E23338F00F3344B /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		AC646A471E400CC700024F40 /* ChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextView.swift; sourceTree = "<group>"; };
+		AC646A491E40182C00024F40 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		ACE0ED9E1E2400B700581D4F /* BotMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotMgr.swift; sourceTree = "<group>"; };
 		ACE0EDA11E241CB100581D4F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ACE0EDA31E24400C00581D4F /* ChatInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInput.swift; sourceTree = "<group>"; };
@@ -102,7 +106,7 @@
 		AC1267F01E22EE2D00F3344B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AC1267EF1E22EE2D00F3344B /* LucasBot.app */,
+				AC1267EF1E22EE2D00F3344B /* TriviaBot.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +164,8 @@
 				ACE0EDA31E24400C00581D4F /* ChatInput.swift */,
 				ACE0EDA51E2485FA00581D4F /* ChatTextField.swift */,
 				ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */,
+				AC646A471E400CC700024F40 /* ChatTextView.swift */,
+				AC646A491E40182C00024F40 /* Avatar.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -212,7 +218,7 @@
 			);
 			name = LucasBot;
 			productName = LucasBot;
-			productReference = AC1267EF1E22EE2D00F3344B /* LucasBot.app */;
+			productReference = AC1267EF1E22EE2D00F3344B /* TriviaBot.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -228,7 +234,7 @@
 					AC1267EE1E22EE2D00F3344B = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 788WMGHEL8;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -323,12 +329,14 @@
 				ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */,
 				ACE0EDA61E2485FA00581D4F /* ChatTextField.swift in Sources */,
 				ACFB9A4A1E2D975900A164A1 /* LoginVC.swift in Sources */,
+				AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */,
 				AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */,
 				ACFB9A5C1E2DC30800A164A1 /* BotViewController.swift in Sources */,
 				ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */,
 				ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */,
 				AC12680D1E2326B000F3344B /* ChatView.swift in Sources */,
 				AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */,
+				AC646A4A1E40182C00024F40 /* Avatar.swift in Sources */,
 				AC1268121E23338F00F3344B /* ChatCell.swift in Sources */,
 				AC1268101E232FA400F3344B /* DataMgr.swift in Sources */,
 				ACFB9A4C1E2D976000A164A1 /* LoginView.swift in Sources */,
@@ -447,11 +455,16 @@
 			baseConfigurationReference = 26C5C08354695B600C484205 /* Pods-LucasBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mirko JUSTINIANO (NXX599X75T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mirko JUSTINIANO (NXX599X75T)";
 				DEVELOPMENT_TEAM = 788WMGHEL8;
 				INFOPLIST_FILE = LucasBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.idevcode.lucasbot;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TriviaBot;
+				PROVISIONING_PROFILE = "7388e728-d936-44fd-8ce8-ca3789a22e93";
+				PROVISIONING_PROFILE_SPECIFIER = MirkoDevs;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -461,11 +474,15 @@
 			baseConfigurationReference = 8ECE106FD0019094AB64ABF3 /* Pods-LucasBot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mirko JUSTINIANO (788WMGHEL8)";
 				DEVELOPMENT_TEAM = 788WMGHEL8;
 				INFOPLIST_FILE = LucasBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.idevcode.lucasbot;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TriviaBot;
+				PROVISIONING_PROFILE = "a5ff8861-81b7-44c6-b7ee-762f9e298cc9";
+				PROVISIONING_PROFILE_SPECIFIER = DistLucas;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -43,7 +43,7 @@ class NetworkMgr {
         NetworkMgr.socket.on(DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!) { data, ack in
             
             debugPrint("socket on data...")
-            debugPrint(data)
+            //debugPrint(data)
             if let msg = data[0] as? String {
                 BotMgr.sharedInstance.sendSocketMessage(msg: msg as String)
             }

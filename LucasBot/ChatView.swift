@@ -15,9 +15,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         let frame = self.frame
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        //layout.minimumLineSpacing = 0.8
-        //layout.minimumInteritemSpacing = 0.8
-        //layout.sectionInset = UIEdgeInsetsMake(4.0, 8.0, 8.0, 8.0)
+        layout.minimumLineSpacing = 20.0
         let cv: UICollectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         cv.backgroundColor = self.backgroundColor
         cv.alwaysBounceVertical = true
@@ -108,14 +106,16 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
         else {
             cell.gifWidth = 0
+            //debugPrint("text for gifWidth 0:")
+            //debugPrint(message.text)
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let message:Message? = messages[indexPath.row]
-        let pad: CGFloat = 10
+        var message:Message? = messages[indexPath.row]
+        let pad: CGFloat = 20
         var size = CGSize(width: collectionView.frame.size.width - pad, height: 10)
         if message != nil {
             if let _: String = message!.imgUrl {
@@ -126,12 +126,16 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
                 size = CGSize(width: collectionView.frame.size.width - pad, height: CGFloat(h))
             }
             else if let text: String = message!.text {
-                let label = UITextView(frame: CGRect.zero)
+                let label = ChatTextView(frame: CGRect.zero)
                 label.font = Utils.chatFont()
-                label.text = "> " + text
+                label.text = text
                 label.sizeToFit()
-                size = label.sizeThatFits(CGSize(width: collectionView.frame.size.width - pad, height: CGFloat.greatestFiniteMagnitude))
+                size = label.sizeThatFits(CGSize(width: collectionView.frame.size.width/1.5, height: CGFloat.greatestFiniteMagnitude))
+                message?.width = size.width.description
+                messages[indexPath.row] = message!
                 size.width = collectionView.frame.size.width - pad
+                //debugPrint("size for Text:")
+                //debugPrint(size)
             }
         }
         

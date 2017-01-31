@@ -48,7 +48,7 @@ struct Utils {
      */
     
     static func backgroundColor() -> UIColor {
-        return UIColor(colorLiteralRed: 28/255, green: 35/255, blue: 41/255, alpha: 1.0)
+        return UIColor(colorLiteralRed: 209/255, green: 225/255, blue: 232/255, alpha: 1.0)
     }
     
     static func lucasColor() -> UIColor {
@@ -60,15 +60,23 @@ struct Utils {
     }
     
     static func chatBotColor() -> UIColor {
-        return UIColor(colorLiteralRed: 119/255, green: 222/255, blue: 8/255, alpha: 1.0)
+        return UIColor.white
     }
     
     static func chatUserColor() -> UIColor {
-        return UIColor.white
+        return UIColor(colorLiteralRed: 47/255, green: 62/255, blue: 70/255, alpha: 1.0)
     }
     
     static func redColor() -> UIColor {
         return UIColor(colorLiteralRed: 237/255, green: 20/255, blue: 91/255, alpha: 1.0)
+    }
+    
+    static func botBubbleColor() -> UIColor {
+        return UIColor(colorLiteralRed: 177/255, green: 203/255, blue: 70/255, alpha: 1.0)
+    }
+    
+    static func userBubbleColor() -> UIColor {
+        return UIColor.white
     }
     
     /*
