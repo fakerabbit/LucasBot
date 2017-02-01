@@ -30,8 +30,6 @@ class ViewController: BotViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //Utils.printFontNamesInSystem()
-        
         BotMgr.sharedInstance.initBot()
         BotMgr.sharedInstance.onMessage = { [weak self] message in
             debugPrint("bot manager received message...")

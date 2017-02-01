@@ -16,6 +16,20 @@ struct Utils {
      */
     
     /*
+     ** Avenir
+     Avenir-Medium
+     Avenir-HeavyOblique
+     Avenir-Book
+     Avenir-Light
+     Avenir-Roman
+     Avenir-BookOblique
+     Avenir-MediumOblique
+     Avenir-Black
+     Avenir-BlackOblique
+     Avenir-Heavy
+     Avenir-LightOblique
+     Avenir-Oblique
+     
      * custom:
      * AlphabetPony-Regular
      * Andrea-Normal
@@ -36,11 +50,15 @@ struct Utils {
     }
     
     static func LucasFont() -> UIFont {
-        return UIFont(name: "AlphabetPony-Regular", size: 75.0)!
+        return UIFont(name: "Avenir-Roman", size: 50.0)!
     }
     
     static func BotFont() -> UIFont {
-        return UIFont(name: "Andrea-Normal", size: 65.0)!
+        return UIFont(name: "Avenir-Roman", size: 50.0)!
+    }
+    
+    static func buttonFont() -> UIFont {
+        return UIFont(name: "Avenir-Heavy", size: 16.0)!
     }
     
     /*
@@ -51,12 +69,16 @@ struct Utils {
         return UIColor(colorLiteralRed: 209/255, green: 225/255, blue: 232/255, alpha: 1.0)
     }
     
+    static func darkBackgroundColor() -> UIColor {
+        return UIColor(colorLiteralRed: 122/255, green: 178/255, blue: 206/255, alpha: 1.0)
+    }
+    
     static func lucasColor() -> UIColor {
-        return UIColor(colorLiteralRed: 40/255, green: 161/255, blue: 255/255, alpha: 1.0)
+        return UIColor(colorLiteralRed: 209/255, green: 225/255, blue: 232/255, alpha: 1.0)
     }
     
     static func botColor() -> UIColor {
-        return UIColor(colorLiteralRed: 119/255, green: 222/255, blue: 8/255, alpha: 1.0)
+        return UIColor(colorLiteralRed: 46/255, green: 62/255, blue: 70/255, alpha: 1.0)
     }
     
     static func chatBotColor() -> UIColor {
@@ -77,6 +99,10 @@ struct Utils {
     
     static func userBubbleColor() -> UIColor {
         return UIColor.white
+    }
+    
+    static func greenColor() -> UIColor {
+        return UIColor(colorLiteralRed: 177/255, green: 203/255, blue: 70/255, alpha: 1.0)
     }
     
     /*

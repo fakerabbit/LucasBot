@@ -17,6 +17,8 @@
 		AC12680D1E2326B000F3344B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680C1E2326B000F3344B /* ChatView.swift */; };
 		AC1268101E232FA400F3344B /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680F1E232FA400F3344B /* DataMgr.swift */; };
 		AC1268121E23338F00F3344B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1268111E23338F00F3344B /* ChatCell.swift */; };
+		AC5C221E1E4257580009A8E2 /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C221D1E4257580009A8E2 /* LoginInput.swift */; };
+		AC5C22201E425AEB0009A8E2 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */; };
 		AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A471E400CC700024F40 /* ChatTextView.swift */; };
 		AC646A4A1E40182C00024F40 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A491E40182C00024F40 /* Avatar.swift */; };
 		ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0ED9E1E2400B700581D4F /* BotMgr.swift */; };
@@ -46,6 +48,8 @@
 		AC12680C1E2326B000F3344B /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AC12680F1E232FA400F3344B /* DataMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
 		AC1268111E23338F00F3344B /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		AC5C221D1E4257580009A8E2 /* LoginInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
+		AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		AC646A471E400CC700024F40 /* ChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextView.swift; sourceTree = "<group>"; };
 		AC646A491E40182C00024F40 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		ACE0ED9E1E2400B700581D4F /* BotMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotMgr.swift; sourceTree = "<group>"; };
@@ -160,8 +164,10 @@
 			children = (
 				ACE0EDA11E241CB100581D4F /* Utils.swift */,
 				ACE0EDA31E24400C00581D4F /* ChatInput.swift */,
+				AC5C221D1E4257580009A8E2 /* LoginInput.swift */,
 				ACE0EDA51E2485FA00581D4F /* ChatTextField.swift */,
 				ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */,
+				AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */,
 				AC646A471E400CC700024F40 /* ChatTextView.swift */,
 				AC646A491E40182C00024F40 /* Avatar.swift */,
 			);
@@ -329,6 +335,8 @@
 				AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */,
 				ACFB9A5C1E2DC30800A164A1 /* BotViewController.swift in Sources */,
 				ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */,
+				AC5C22201E425AEB0009A8E2 /* LoginTextField.swift in Sources */,
+				AC5C221E1E4257580009A8E2 /* LoginInput.swift in Sources */,
 				ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */,
 				AC12680D1E2326B000F3344B /* ChatView.swift in Sources */,
 				AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */,
