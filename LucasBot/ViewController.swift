@@ -29,7 +29,7 @@ class ViewController: BotViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        chatView.animateView()
         BotMgr.sharedInstance.initBot()
         BotMgr.sharedInstance.onMessage = { [weak self] message in
             debugPrint("bot manager received message...")

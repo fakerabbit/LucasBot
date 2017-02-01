@@ -56,6 +56,15 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         return input
     }()
     
+    lazy var greenDot: UIView! = {
+        let view = UIView(frame: CGRect.zero)
+        view.backgroundColor = Utils.greenColor()
+        view.isUserInteractionEnabled = false
+        view.layer.cornerRadius = 10.0;
+        view.layer.masksToBounds = false;
+        return view
+    }()
+    
     /*
      * MARK:- Init
      */
@@ -69,10 +78,15 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         self.addSubview(chatInput)
         chatInput.containerView = collectionView
         
-        let h: CGFloat = self.frame.size.height
-        let w: CGFloat = self.frame.size.width
+        let h: CGFloat = frame.size.height
+        let w: CGFloat = frame.size.width
         chatInput.frame = CGRect(x: 0, y: h - chatInput.frame.size.height, width: chatInput.frame.size.width, height: chatInput.frame.size.height)
         collectionView.frame = CGRect(x: 0, y: 0, width: w, height: chatInput.frame.minY)
+        
+        self.addSubview(greenDot)
+        let dotW: CGFloat = w * 2
+        let dotH: CGFloat = h * 2
+        greenDot.frame = CGRect(x: w - dotW, y: h - dotH, width: dotW, height: dotH)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -140,5 +154,20 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
         
         return size
+    }
+    
+    // MARK:- Animations
+    
+    func animateView() {
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            
+            let w = self.frame.size.width
+            let h = self.frame.size.height
+            self.greenDot.frame = CGRect(x: w - 20, y: h - 20, width: 5, height: 5)
+        }, completion: { finished in
+            self.greenDot.removeFromSuperview()
+            self.chatInput.animateSendBtn()
+        })
     }
 }

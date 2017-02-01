@@ -25,18 +25,21 @@ class LoginVC: BotViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Utils.printFontNamesInSystem()
+        //Utils.printFontNamesInSystem()
         self.checkStore()
         loginView.animateSignUp()
-        loginView.onSignUp = { email, password in
+        loginView.onSignUp = { [weak self] email, password in
             
             if email != nil && password != nil {
                 BotMgr.sharedInstance.signUp(email: email!, password: password!) { result in
                     
                     if result {
                         debugPrint("sign up SUCCESS")
-                        let vc = ViewController()
-                        self.nav?.viewControllers = [vc]
+                        self?.loginView.animateLogin(callback: { [weak self] finished in
+                            
+                            let vc = ViewController()
+                            self?.nav?.viewControllers = [vc]
+                        })
                     }
                     else {
                         //show error message to user

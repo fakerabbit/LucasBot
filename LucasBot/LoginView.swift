@@ -52,6 +52,15 @@ class LoginView: UIView {
         return button
     }()
     
+    lazy var greenDot: UIView! = {
+       let view = UIView(frame: CGRect.zero)
+        view.backgroundColor = Utils.greenColor()
+        view.isUserInteractionEnabled = false
+        view.layer.cornerRadius = 10.0;
+        view.layer.masksToBounds = false;
+        return view
+    }()
+    
     /*
      * MARK:- Init
      */
@@ -63,14 +72,17 @@ class LoginView: UIView {
         self.addSubview(bot)
         self.addSubview(signUpInput)
         self.addSubview(goBtn)
+        self.addSubview(greenDot)
         
         signUpInput.onSend = { text in
             self.onSignUp(text, "1234567890")
         }
         
         //[rotationView setTransform:CGAffineTransformMakeScale(2.0, 2.0)];
-        goBtn.transform = CGAffineTransform(scaleX: 0, y: 0)
-        signUpInput.transform = CGAffineTransform(scaleX: 0, y: 0)
+        goBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        goBtn.isHidden = true
+        signUpInput.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        greenDot.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,7 +111,7 @@ class LoginView: UIView {
     func onGo(_ sender : UIButton) {
         signUpInput.resignFirstResponder()
         if signUpInput.getText() != nil && (signUpInput.getText()?.characters.count)! > 1 {
-            self.onSignUp(signUpInput.getText(), "0987654321")
+            self.onSignUp(signUpInput.getText(), "1234567890")
         }
     }
     
@@ -112,21 +124,21 @@ class LoginView: UIView {
             self.signUpInput.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: { finished in
             UIView.animate(withDuration: 1.0, animations: {
-                
+                self.goBtn.isHidden = false
                 self.goBtn.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
         })
     }
     
-    func animateLogin() {
+    func animateLogin(callback: @escaping LoginViewCallback) {
+        greenDot.frame = CGRect(x: goBtn.frame.midX, y: goBtn.frame.midY, width: signUpInput.frame.size.height/2, height: signUpInput.frame.size.height/2)
         
         UIView.animate(withDuration: 1.0, animations: {
             
-            self.goBtn.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            self.greenDot.isHidden = false
+            self.greenDot.transform = CGAffineTransform(scaleX: 50, y: 50)
         }, completion: { finished in
-            UIView.animate(withDuration: 1.0, animations: {
-                
-            }, completion: nil)
+            callback(finished)
         })
     }
 }

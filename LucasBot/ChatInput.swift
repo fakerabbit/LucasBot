@@ -60,6 +60,8 @@ class ChatInput: UIView, UITextFieldDelegate {
         
         self.addSubview(input)
         self.addSubview(sendBtn)
+        sendBtn.isHidden = true
+        sendBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -140,5 +142,16 @@ class ChatInput: UIView, UITextFieldDelegate {
             textField.text = ""
         }
         return true
+    }
+    
+    // MARK:- Animations
+    
+    func animateSendBtn() {
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            
+            self.sendBtn.isHidden = false
+            self.sendBtn.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil)
     }
 }
