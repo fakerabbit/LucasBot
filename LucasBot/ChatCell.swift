@@ -155,6 +155,6 @@ class ChatCell: UICollectionViewCell {
         }
         
         imageView.frame = CGRect(x: 0, y: 0, width: w, height: h)
-        gif.frame = CGRect(x: w/2 - gifWidth/2, y: 0, width: gifWidth, height: h)
+        gif.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
     }
 }
