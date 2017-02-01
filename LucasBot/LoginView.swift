@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftyGif
 
 class LoginView: UIView, UITextFieldDelegate {
     
@@ -21,7 +20,7 @@ class LoginView: UIView, UITextFieldDelegate {
         let label:UILabel = UILabel(frame: CGRect.zero)
         label.font = Utils.LucasFont()
         label.textColor = Utils.lucasColor()
-        label.text = "Lucas"
+        label.text = "Trivia"
         label.sizeToFit()
         return label
     }()
@@ -33,15 +32,6 @@ class LoginView: UIView, UITextFieldDelegate {
         label.text = "Bot"
         label.sizeToFit()
         return label
-    }()
-    
-    fileprivate lazy var gif:UIImageView! = {
-        let gifmanager = SwiftyGifManager(memoryLimit:20)
-        let gf = UIImage(gifName: Utils.kDefaultGif)
-        let i:UIImageView = UIImageView(gifImage: gf, manager: gifmanager)
-        i.frame = CGRect(x: 0, y: 0, width: 537, height: 360)
-        i.contentMode = .scaleAspectFit
-        return i
     }()
     
     lazy var signUpInput: RedTextField! = {
@@ -71,7 +61,6 @@ class LoginView: UIView, UITextFieldDelegate {
         
         self.addSubview(lucas)
         self.addSubview(bot)
-        self.addSubview(gif)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,20 +71,15 @@ class LoginView: UIView, UITextFieldDelegate {
     
     func animateLogo(callback: @escaping LoginViewCallback) {
         let w: CGFloat = self.frame.size.width
-        let h: CGFloat = self.frame.size.height
         let top: CGFloat = 100.0
-        self.gif.startAnimatingGif()
         lucas.frame = CGRect(x: -lucas.frame.size.width, y: top, width: lucas.frame.size.width, height: lucas.frame.size.height)
         bot.frame = CGRect(x: w/2, y: -bot.frame.size.height, width: bot.frame.size.width, height: bot.frame.size.height)
-        gif.frame = CGRect(x: 0, y: h, width: w, height: gif.frame.size.height)
         
         UIView.animate(withDuration: 1.0, animations: {
             
             let top2: CGFloat = top + 10
-            let pad: CGFloat = 30
             self.lucas.frame = CGRect(x: w/2 - self.lucas.frame.size.width, y: top, width: self.lucas.frame.size.width, height: self.lucas.frame.size.height)
             self.bot.frame = CGRect(x: w/2, y: top2, width: self.bot.frame.size.width, height: self.bot.frame.size.height)
-            self.gif.frame = CGRect(x: 0, y: self.lucas.frame.maxY + pad, width: w, height: self.gif.frame.size.height)
             
         }, completion: { finished in
             callback(finished)
@@ -114,7 +98,6 @@ class LoginView: UIView, UITextFieldDelegate {
 
         UIView.animate(withDuration: 2.0, animations: {
             
-            self.gif.isHidden = true
             self.signUpInput.frame = CGRect(x: pad, y: self.bot.frame.maxY + 30, width: w - pad * 2, height: 50)
             
         }, completion: { finished in

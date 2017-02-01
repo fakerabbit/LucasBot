@@ -27,33 +27,24 @@ class ChatInput: UIView, UITextFieldDelegate {
     lazy var input: ChatTextField! = {
         let textfield = ChatTextField(frame: CGRect.zero)
         textfield.delegate = self
+        textfield.backgroundColor = UIColor.white
         textfield.textColor = Utils.chatUserColor()
         textfield.returnKeyType = .go
-        textfield.placeholder = "Type here..."
+        textfield.placeholder = "Ask bot..."
+        textfield.layer.cornerRadius = 3.0;
+        textfield.layer.masksToBounds = false;
         return textfield
+    }()
+    
+    lazy var sendBtn: UIButton! = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "sendBtn"), for: .normal)
+        button.addTarget(self, action: #selector(onSend(_:)), for: .touchUpInside)
+        return button
     }()
     
     var isKeyboardShowing: Bool = false,
         keyboardFrame: CGRect = CGRect.zero
-    
-    lazy var lineIv: UIImageView! = {
-        if let image = UIImage(named: "inputLine") {
-            let imageView = UIImageView(image: image.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: image.size.width/2, bottom: 0, right: image.size.width/2), resizingMode: .tile))
-            //imageView.contentMode = .scaleAspectFill
-            //imageView.autoresizingMask = .flexibleWidth
-            return imageView
-        }
-        return UIImageView()
-    }()
-    
-    lazy var carot: UILabel! = {
-       let label = UILabel(frame: CGRect.zero)
-        label.textColor = Utils.chatBotColor()
-        label.font = Utils.chatFont()
-        label.text = ">"
-        label.sizeToFit()
-        return label
-    }()
     
     typealias ChatInputOnMessage = (String?) -> Void
     var onMessage: ChatInputOnMessage = { message in }
@@ -67,9 +58,8 @@ class ChatInput: UIView, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidChangeStatusBarNotification(notification:)), name: .UIApplicationWillChangeStatusBarFrame, object: nil)
         
-        self.addSubview(carot)
-        self.addSubview(lineIv)
         self.addSubview(input)
+        self.addSubview(sendBtn)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,11 +71,20 @@ class ChatInput: UIView, UITextFieldDelegate {
         super.layoutSubviews()
         let w: CGFloat = self.frame.size.width
         let h: CGFloat = self.frame.size.height
-        let pad: CGFloat = 30.0
-        let lineH: CGFloat = lineIv.frame.size.height
-        input.frame = CGRect(x: 0, y: 0, width: w, height: h)
-        carot.frame = CGRect(x: pad/2, y: h/2 - carot.frame.size.height/2, width: carot.frame.size.width, height: carot.frame.size.height)
-        lineIv.frame = CGRect(x: pad, y: h - (10 + lineH), width: w - pad * 2, height: lineH)
+        let pad: CGFloat = 10.0
+        let btnS: CGFloat = kChatInputHeight - pad * 2
+        sendBtn.frame = CGRect(x: w - (pad + btnS), y: pad, width: btnS, height: btnS)
+        input.frame = CGRect(x: pad, y: pad, width: w - (pad * 2 + btnS + 5), height: h - pad * 2)
+    }
+    
+    // MARK:- Private
+    
+    func onSend(_ sender : UIButton) {
+        input.resignFirstResponder()
+        if input.text != nil && (input.text?.characters.count)! > 1 {
+            self.onMessage(input.text)
+            input.text = ""
+        }
     }
     
     // MARK:- Keyboard notifications
@@ -136,8 +135,10 @@ class ChatInput: UIView, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        self.onMessage(textField.text)
-        textField.text = ""
+        if textField.text != nil && (textField.text?.characters.count)! > 1 {
+            self.onMessage(textField.text)
+            textField.text = ""
+        }
         return true
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let kChatTextInset: CGFloat = 30
+let kChatTextInset: CGFloat = 10
 
 class ChatTextField: UITextField {
     

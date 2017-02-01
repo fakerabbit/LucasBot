@@ -27,7 +27,6 @@
 		ACFB9A4C1E2D976000A164A1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A4B1E2D976000A164A1 /* LoginView.swift */; };
 		ACFB9A531E2DB7BE00A164A1 /* AlphabetPony-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */; };
 		ACFB9A551E2DB7C500A164A1 /* Andrea-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */; };
-		ACFB9A571E2DB7E300A164A1 /* typing.gif in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A561E2DB7E300A164A1 /* typing.gif */; };
 		ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A591E2DC1C900A164A1 /* NavController.swift */; };
 		ACFB9A5C1E2DC30800A164A1 /* BotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A5B1E2DC30800A164A1 /* BotViewController.swift */; };
 		ACFB9A5E1E2DD38D00A164A1 /* RedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */; };
@@ -57,7 +56,6 @@
 		ACFB9A4B1E2D976000A164A1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AlphabetPony-Regular.otf"; path = "Assets/Fonts/AlphabetPony-Regular.otf"; sourceTree = "<group>"; };
 		ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Andrea-Normal.otf"; path = "Assets/Fonts/Andrea-Normal.otf"; sourceTree = "<group>"; };
-		ACFB9A561E2DB7E300A164A1 /* typing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = typing.gif; path = Assets/typing.gif; sourceTree = "<group>"; };
 		ACFB9A591E2DC1C900A164A1 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		ACFB9A5B1E2DC30800A164A1 /* BotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotViewController.swift; sourceTree = "<group>"; };
 		ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedTextField.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 		ACFB9A4D1E2DB1AD00A164A1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				ACFB9A561E2DB7E300A164A1 /* typing.gif */,
 				ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */,
 				ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */,
 			);
@@ -262,7 +259,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC1268001E22EE2E00F3344B /* LaunchScreen.storyboard in Resources */,
-				ACFB9A571E2DB7E300A164A1 /* typing.gif in Resources */,
 				ACFB9A551E2DB7C500A164A1 /* Andrea-Normal.otf in Resources */,
 				ACFB9A531E2DB7BE00A164A1 /* AlphabetPony-Regular.otf in Resources */,
 				AC1267FD1E22EE2E00F3344B /* Assets.xcassets in Resources */,

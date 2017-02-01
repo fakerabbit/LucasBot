@@ -59,11 +59,13 @@ class ChatCell: UICollectionViewCell {
                     }
                 }
                 self.textView.text = ""
+                self.textView.isHidden = true
                 self.gif.isHidden = true
                 self.gif.stopLoading()
             }
             else {
                 self.imageView.image = nil
+                self.textView.isHidden = false
             }
         }
     }
