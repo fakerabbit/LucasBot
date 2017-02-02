@@ -13,7 +13,7 @@ class ChatInput: UIView, UITextFieldDelegate {
     
     let kChatInputHeight:CGFloat = 50.0
     
-    var containerView: UIView! {
+    var containerView: UICollectionView! {
         didSet {
             if containerView != nil {
                 let tap = UITapGestureRecognizer(target: self, action: #selector(onContainerTap))
@@ -131,6 +131,14 @@ class ChatInput: UIView, UITextFieldDelegate {
             self.frame.origin = CGPoint(x: 0, y: (self.superview?.frame.size.height)! - kChatInputHeight)
         }
         containerView.frame.size = CGSize(width: containerView.frame.size.width, height: self.frame.minY)
+        scrollViewToBottom()
+    }
+    
+    func scrollViewToBottom() {
+        let section = containerView.numberOfSections - 1
+        let item = containerView.numberOfItems(inSection: section) - 1
+        let lastIndex = NSIndexPath(item: item, section: section)
+        containerView.scrollToItem(at: lastIndex as IndexPath, at: .bottom, animated: true)
     }
     
     // MARK:- UITextFieldDelegate methods
