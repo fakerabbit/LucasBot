@@ -133,7 +133,7 @@ class LoginView: UIView {
     func animateLogin(callback: @escaping LoginViewCallback) {
         greenDot.frame = CGRect(x: goBtn.frame.midX, y: goBtn.frame.midY, width: signUpInput.frame.size.height/2, height: signUpInput.frame.size.height/2)
         
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 2.0, animations: {
             
             self.greenDot.isHidden = false
             self.greenDot.transform = CGAffineTransform(scaleX: 50, y: 50)

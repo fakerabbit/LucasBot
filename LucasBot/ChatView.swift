@@ -160,7 +160,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func animateView() {
         
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 2.0, animations: {
             
             let w = self.frame.size.width
             let h = self.frame.size.height
