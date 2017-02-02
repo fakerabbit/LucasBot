@@ -41,8 +41,10 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AlphabetPony-Regular.otf</string>
-		<string>Andrea-Normal.otf</string>
+		<string>SanFranciscoDisplay-Medium.otf</string>
+		<string>SanFranciscoDisplay-Regular.otf</string>
+		<string>SanFranciscoDisplay-Bold.otf</string>
+		<string>SanFranciscoDisplay-Light.otf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		02F656EB95729CA828EED01D /* Pods_LucasBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50B966E5C875AC22C8929AB /* Pods_LucasBot.framework */; };
+		AC036AEC1E43874100D19A2B /* SanFranciscoDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AE91E43874100D19A2B /* SanFranciscoDisplay-Bold.otf */; };
+		AC036AED1E43874100D19A2B /* SanFranciscoDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEA1E43874100D19A2B /* SanFranciscoDisplay-Light.otf */; };
+		AC036AEE1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */; };
+		AC036AF01E43955C00D19A2B /* wave-chat.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEF1E43955C00D19A2B /* wave-chat.gif */; };
+		AC036AF21E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */; };
 		AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F21E22EE2D00F3344B /* AppDelegate.swift */; };
 		AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F41E22EE2D00F3344B /* ViewController.swift */; };
 		AC1267FB1E22EE2E00F3344B /* LucasBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F91E22EE2E00F3344B /* LucasBot.xcdatamodeld */; };
@@ -27,8 +32,6 @@
 		ACE0EDA61E2485FA00581D4F /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA51E2485FA00581D4F /* ChatTextField.swift */; };
 		ACFB9A4A1E2D975900A164A1 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A491E2D975900A164A1 /* LoginVC.swift */; };
 		ACFB9A4C1E2D976000A164A1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A4B1E2D976000A164A1 /* LoginView.swift */; };
-		ACFB9A531E2DB7BE00A164A1 /* AlphabetPony-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */; };
-		ACFB9A551E2DB7C500A164A1 /* Andrea-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */; };
 		ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A591E2DC1C900A164A1 /* NavController.swift */; };
 		ACFB9A5C1E2DC30800A164A1 /* BotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A5B1E2DC30800A164A1 /* BotViewController.swift */; };
 		ACFB9A5E1E2DD38D00A164A1 /* RedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */; };
@@ -37,6 +40,11 @@
 /* Begin PBXFileReference section */
 		26C5C08354695B600C484205 /* Pods-LucasBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucasBot/Pods-LucasBot.debug.xcconfig"; sourceTree = "<group>"; };
 		8ECE106FD0019094AB64ABF3 /* Pods-LucasBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-LucasBot/Pods-LucasBot.release.xcconfig"; sourceTree = "<group>"; };
+		AC036AE91E43874100D19A2B /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Bold.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
+		AC036AEA1E43874100D19A2B /* SanFranciscoDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Light.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Light.otf"; sourceTree = "<group>"; };
+		AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Regular.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
+		AC036AEF1E43955C00D19A2B /* wave-chat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "wave-chat.gif"; path = "Assets/wave-chat.gif"; sourceTree = "<group>"; };
+		AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Medium.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Medium.otf"; sourceTree = "<group>"; };
 		AC1267EF1E22EE2D00F3344B /* TriviaBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriviaBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1267F21E22EE2D00F3344B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC1267F41E22EE2D00F3344B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +66,6 @@
 		ACE0EDA51E2485FA00581D4F /* ChatTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
 		ACFB9A491E2D975900A164A1 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		ACFB9A4B1E2D976000A164A1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AlphabetPony-Regular.otf"; path = "Assets/Fonts/AlphabetPony-Regular.otf"; sourceTree = "<group>"; };
-		ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Andrea-Normal.otf"; path = "Assets/Fonts/Andrea-Normal.otf"; sourceTree = "<group>"; };
 		ACFB9A591E2DC1C900A164A1 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		ACFB9A5B1E2DC30800A164A1 /* BotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotViewController.swift; sourceTree = "<group>"; };
 		ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedTextField.swift; sourceTree = "<group>"; };
@@ -186,8 +192,11 @@
 		ACFB9A4D1E2DB1AD00A164A1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				ACFB9A521E2DB7BE00A164A1 /* AlphabetPony-Regular.otf */,
-				ACFB9A541E2DB7C500A164A1 /* Andrea-Normal.otf */,
+				AC036AEF1E43955C00D19A2B /* wave-chat.gif */,
+				AC036AE91E43874100D19A2B /* SanFranciscoDisplay-Bold.otf */,
+				AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */,
+				AC036AEA1E43874100D19A2B /* SanFranciscoDisplay-Light.otf */,
+				AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -264,9 +273,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC036AEC1E43874100D19A2B /* SanFranciscoDisplay-Bold.otf in Resources */,
+				AC036AF01E43955C00D19A2B /* wave-chat.gif in Resources */,
+				AC036AF21E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf in Resources */,
+				AC036AEE1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf in Resources */,
+				AC036AED1E43874100D19A2B /* SanFranciscoDisplay-Light.otf in Resources */,
 				AC1268001E22EE2E00F3344B /* LaunchScreen.storyboard in Resources */,
-				ACFB9A551E2DB7C500A164A1 /* Andrea-Normal.otf in Resources */,
-				ACFB9A531E2DB7BE00A164A1 /* AlphabetPony-Regular.otf in Resources */,
 				AC1267FD1E22EE2E00F3344B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

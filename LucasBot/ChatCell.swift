@@ -31,7 +31,7 @@ class ChatCell: UICollectionViewCell {
     
     var text:String! {
         didSet {
-            debugPrint("text didSet: ", text)
+            //debugPrint("text didSet: ", text)
             if text != nil {
                 self.textView.isHidden = false
             }

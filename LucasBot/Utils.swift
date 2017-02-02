@@ -30,9 +30,11 @@ struct Utils {
      Avenir-LightOblique
      Avenir-Oblique
      
-     * custom:
-     * AlphabetPony-Regular
-     * Andrea-Normal
+     ** San Francisco Display
+     SanFranciscoDisplay-Regular
+     SanFranciscoDisplay-Light
+     SanFranciscoDisplay-Medium
+     SanFranciscoDisplay-Bold
      */
     
     static func printFontNamesInSystem() {
@@ -46,7 +48,7 @@ struct Utils {
     }
     
     static func chatFont() -> UIFont {
-        return UIFont(name: "Courier", size: 16.0)!
+        return UIFont(name: "SanFranciscoDisplay-Regular", size: 18.0)!
     }
     
     static func LucasFont() -> UIFont {
@@ -58,7 +60,7 @@ struct Utils {
     }
     
     static func buttonFont() -> UIFont {
-        return UIFont(name: "Avenir-Heavy", size: 16.0)!
+        return UIFont(name: "SanFranciscoDisplay-Medium", size: 18.0)!
     }
     
     /*
