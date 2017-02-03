@@ -24,7 +24,7 @@ class ChatCell: UICollectionViewCell {
                 textView.textColor = Utils.chatBotColor()
                 textView.textAlignment = .left
             }
-            avatar.isBot = !isUser
+            avatar.isHidden = isUser
             self.setNeedsLayout()
         }
     }
@@ -106,6 +106,7 @@ class ChatCell: UICollectionViewCell {
         super.init(frame: frame)
         //self.contentView.backgroundColor = UIColor.red
         
+        avatar.isBot = true
         self.contentView.addSubview(avatar)
         
         self.contentView.addSubview(textView)
@@ -144,12 +145,12 @@ class ChatCell: UICollectionViewCell {
         let aPad:CGFloat = 10.0
         let tW:CGFloat = gifWidth + 20
         
+        avatar.frame = CGRect(x: pad, y: 0, width: avatar.frame.size.width, height: avatar.frame.size.height)
+        
         if self.isUser == true {
-            avatar.frame = CGRect(x: w - (pad + avatar.frame.size.width), y: 0, width: avatar.frame.size.width, height: avatar.frame.size.height)
-            textView.frame = CGRect(x: avatar.frame.minX - (aPad + tW), y: 0, width: tW, height: h)
+            textView.frame = CGRect(x: w - (pad + aPad + tW), y: 0, width: tW, height: h)
         }
         else {
-            avatar.frame = CGRect(x: pad, y: 0, width: avatar.frame.size.width, height: avatar.frame.size.height)
             textView.frame = CGRect(x: avatar.frame.maxX + aPad, y: 0, width: tW, height: h)
         }
         
