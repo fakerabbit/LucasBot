@@ -232,11 +232,11 @@ class BotMgr {
     }
     
     private func startQueue() {
-        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { (timer) in
+        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] (timer) in
             //debugPrint("timer awake...")
-            if self.queue.count > 0 {
-                let message:Message = self.queue.removeFirst()
-                self.onMessage(message)
+            if (self?.queue.count)! > 0 {
+                let message:Message = self!.queue.removeFirst()
+                self?.onMessage(message)
             }
         }
         RunLoop.current.add(timer, forMode: .commonModes)
