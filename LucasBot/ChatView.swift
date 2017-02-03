@@ -142,13 +142,12 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         if message != nil {
             if let _: String = message!.imgUrl {
                 size = CGSize(width: collectionView.frame.size.width - pad, height: 250)
+                message?.width = "167"
+                messages[indexPath.row] = message!
             }
             else if let height: String = message!.height {
                 let h = NumberFormatter().number(from: height)!.floatValue
                 size = CGSize(width: collectionView.frame.size.width - pad, height: CGFloat(h))
-            }
-            else if message!.typing == true {
-                size = CGSize(width: collectionView.frame.size.width - pad, height: 35)
             }
             else if let text: String = message!.text {
                 let label = ChatTextView(frame: CGRect.zero)

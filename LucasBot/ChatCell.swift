@@ -114,9 +114,9 @@ class ChatCell: UICollectionViewCell {
         imageView.backgroundColor = UIColor.clear
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = false
-        //imageView.layer.cornerRadius = 6.0;
-        //imageView.layer.masksToBounds = false;
-        //imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 6.0;
+        imageView.layer.masksToBounds = false;
+        imageView.clipsToBounds = true
         self.contentView.addSubview(imageView)
         
         gif.backgroundColor = UIColor.clear
@@ -143,7 +143,7 @@ class ChatCell: UICollectionViewCell {
         let w:CGFloat = self.frame.size.width
         let h:CGFloat = self.frame.size.height
         let aPad:CGFloat = 10.0
-        let tW:CGFloat = gifWidth + 20
+        let tW:CGFloat = gifWidth
         
         avatar.frame = CGRect(x: pad, y: 0, width: avatar.frame.size.width, height: avatar.frame.size.height)
         
@@ -154,7 +154,7 @@ class ChatCell: UICollectionViewCell {
             textView.frame = CGRect(x: avatar.frame.maxX + aPad, y: 0, width: tW, height: h)
         }
         
-        imageView.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        imageView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
         gif.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
     }
 }
