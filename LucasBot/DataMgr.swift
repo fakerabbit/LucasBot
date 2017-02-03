@@ -24,6 +24,7 @@ struct Message {
     var giphy: String?
     var width: String?
     var height: String?
+    var typing: Bool = false
 }
 
 enum Keys:String {

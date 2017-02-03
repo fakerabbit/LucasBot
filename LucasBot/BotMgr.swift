@@ -17,10 +17,12 @@ class BotMgr {
     typealias BotMgrCallback = (Message?) -> Void
     typealias BotMgrOnMessage = (Message) -> Void
     var onMessage: BotMgrOnMessage = { message in }
+    private var queue:[Message] = []
     
     func initBot() {
-        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false)
         self.onMessage(message)
+        self.startQueue()
         NetworkMgr.sharedInstance.initSocket() { connected in
             if connected == true {
                 self.sendMessageToBot(message: "Hello")
@@ -29,25 +31,27 @@ class BotMgr {
         }
     }
     
+    // MARK:- API
+    
     func sendMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false)
         self.onMessage(message)
         self.sendMessageToBot(message: msg)
     }
     
     func sendSocketMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil)
-        self.onMessage(message)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false)
+        self.processBotMessage(message: message)
     }
     
     func sendSocketImage(imgUrl: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl, giphy: nil, width: nil, height: nil)
-        self.onMessage(message)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl, giphy: nil, width: nil, height: nil, typing: false)
+        self.processBotMessage(message: message)
     }
     
     func sendSocketGif(url: String, width: String, height: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: url, width: width, height: height)
-        self.onMessage(message)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: url, width: width, height: height, typing: false)
+        self.processBotMessage(message: message)
     }
     
     func signUp(email: String, password: String, callback: @escaping BotMgrSignUpCallback) {
@@ -219,5 +223,20 @@ class BotMgr {
             default: break
             }
         }
+    }
+    
+    private func processBotMessage(message: Message) {
+        self.queue.append(message)
+    }
+    
+    private func startQueue() {
+        let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { (timer) in
+            //debugPrint("timer awake...")
+            if self.queue.count > 0 {
+                let message:Message = self.queue.removeFirst()
+                self.onMessage(message)
+            }
+        }
+        RunLoop.current.add(timer, forMode: .commonModes)
     }
 }

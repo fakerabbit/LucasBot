@@ -33,8 +33,11 @@ class ViewController: BotViewController {
         chatView.animateView()
         BotMgr.sharedInstance.onMessage = { [weak self] message in
             debugPrint("bot manager received message...")
-            if message != nil {
+            if message.type == "user" {
                 self?.chatView.newMessage = message
+            }
+            else {
+                self?.chatView.newBotMessage = message
             }
         }
     }

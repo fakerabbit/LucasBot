@@ -111,5 +111,5 @@ struct Utils {
      * MARK:- IMAGES
      */
     
-    static let kDefaultGif:String = "typing"
+    static let kDefaultGif:String = "wave-chat"
 }

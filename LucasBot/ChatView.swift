@@ -51,6 +51,23 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
     }
     
+    var newBotMessage: Message! {
+        didSet {
+            debugPrint("new bot message:")
+            self.collectionView.performBatchUpdates({
+                let row:Int = self.messages.count
+                self.messages.append(self.newBotMessage)
+                self.collectionView.insertItems(at: [IndexPath(row: row, section: 0)])
+            }, completion: { finished in
+                var row:Int = self.messages.count - 1
+                if row < 0 {
+                    row = 0
+                }
+                self.collectionView.scrollToItem(at: IndexPath(row: row, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
+            })
+        }
+    }
+    
     lazy var chatInput: ChatInput! = {
         let input: ChatInput = ChatInput(frame: CGRect.zero)
         return input
@@ -123,6 +140,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
             //debugPrint("text for gifWidth 0:")
             //debugPrint(message.text)
         }
+        cell.typing = message.typing
         
         return cell
     }
@@ -138,6 +156,9 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
             else if let height: String = message!.height {
                 let h = NumberFormatter().number(from: height)!.floatValue
                 size = CGSize(width: collectionView.frame.size.width - pad, height: CGFloat(h))
+            }
+            else if message!.typing == true {
+                size = CGSize(width: collectionView.frame.size.width - pad, height: 35)
             }
             else if let text: String = message!.text {
                 let label = ChatTextView(frame: CGRect.zero)
