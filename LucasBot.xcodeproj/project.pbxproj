@@ -13,6 +13,7 @@
 		AC036AEE1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */; };
 		AC036AF01E43955C00D19A2B /* wave-chat.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEF1E43955C00D19A2B /* wave-chat.gif */; };
 		AC036AF21E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */; };
+		AC036AF41E4421D500D19A2B /* TypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC036AF31E4421D500D19A2B /* TypingView.swift */; };
 		AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F21E22EE2D00F3344B /* AppDelegate.swift */; };
 		AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F41E22EE2D00F3344B /* ViewController.swift */; };
 		AC1267FB1E22EE2E00F3344B /* LucasBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F91E22EE2E00F3344B /* LucasBot.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Regular.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
 		AC036AEF1E43955C00D19A2B /* wave-chat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "wave-chat.gif"; path = "Assets/wave-chat.gif"; sourceTree = "<group>"; };
 		AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Medium.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Medium.otf"; sourceTree = "<group>"; };
+		AC036AF31E4421D500D19A2B /* TypingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingView.swift; sourceTree = "<group>"; };
 		AC1267EF1E22EE2D00F3344B /* TriviaBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriviaBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1267F21E22EE2D00F3344B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC1267F41E22EE2D00F3344B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				ACFB9A5D1E2DD38D00A164A1 /* RedTextField.swift */,
 				AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */,
 				AC646A471E400CC700024F40 /* ChatTextView.swift */,
+				AC036AF31E4421D500D19A2B /* TypingView.swift */,
 				AC646A491E40182C00024F40 /* Avatar.swift */,
 			);
 			name = Utils;
@@ -355,6 +358,7 @@
 				AC646A4A1E40182C00024F40 /* Avatar.swift in Sources */,
 				AC1268121E23338F00F3344B /* ChatCell.swift in Sources */,
 				AC1268101E232FA400F3344B /* DataMgr.swift in Sources */,
+				AC036AF41E4421D500D19A2B /* TypingView.swift in Sources */,
 				ACFB9A4C1E2D976000A164A1 /* LoginView.swift in Sources */,
 				ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */,
 				AC12680B1E22FED200F3344B /* NetworkMgr.swift in Sources */,

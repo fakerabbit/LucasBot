@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import SDWebImage
-import SwiftyGif
 
 class ChatCell: UICollectionViewCell {
     
@@ -44,8 +43,6 @@ class ChatCell: UICollectionViewCell {
             self.imageView.image = nil
             self.gif.isHidden = true
             self.gif.stopLoading()
-            self.gifView.stopAnimatingGif()
-            self.gifView.isHidden = true
             self.setNeedsLayout()
         }
     }
@@ -65,8 +62,6 @@ class ChatCell: UICollectionViewCell {
                 self.textView.isHidden = true
                 self.gif.isHidden = true
                 self.gif.stopLoading()
-                self.gifView.stopAnimatingGif()
-                self.gifView.isHidden = true
             }
             else {
                 self.imageView.image = nil
@@ -86,8 +81,6 @@ class ChatCell: UICollectionViewCell {
                 self.textView.text = ""
                 self.imageView.image = nil
                 self.textView.isHidden = true
-                self.gifView.stopAnimatingGif()
-                self.gifView.isHidden = true
             }
             else {
                 self.gif.isHidden = true
@@ -102,32 +95,8 @@ class ChatCell: UICollectionViewCell {
         }
     }
     
-    var typing:Bool! {
-        didSet {
-            if typing == true {
-                //debugPrint("typing is true....")
-                self.textView.isHidden = true
-                self.gifView.isHidden = false
-                self.imageView.image = nil
-                self.gif.isHidden = true
-                self.gif.stopLoading()
-                
-                let gifmanager = SwiftyGifManager(memoryLimit:20)
-                let gf = UIImage(gifName: Utils.kDefaultGif)
-                self.gifView.setGifImage(gf, manager: gifmanager)
-                self.gifView.startAnimatingGif()
-            }
-            else {
-                self.gifView.stopAnimatingGif()
-                self.gifView.isHidden = true
-                //self.textView.isHidden = false
-            }
-        }
-    }
-    
     private let textView: ChatTextView = ChatTextView(frame: CGRect.zero)
     private let imageView: UIImageView = UIImageView(frame: CGRect.zero)
-    private let gifView: UIImageView = UIImageView(frame: CGRect.zero)
     private let gif: UIWebView = UIWebView(frame: CGRect.zero)
     private let avatar = Avatar(frame: CGRect.zero)
     private let pad: CGFloat = 10.0
@@ -148,11 +117,6 @@ class ChatCell: UICollectionViewCell {
         //imageView.layer.masksToBounds = false;
         //imageView.clipsToBounds = true
         self.contentView.addSubview(imageView)
-        
-        gifView.backgroundColor = UIColor.clear
-        gifView.contentMode = .scaleAspectFit
-        gifView.isUserInteractionEnabled = false
-        self.contentView.addSubview(gifView)
         
         gif.backgroundColor = UIColor.clear
         gif.contentMode = .scaleAspectFit
@@ -191,6 +155,5 @@ class ChatCell: UICollectionViewCell {
         
         imageView.frame = CGRect(x: 0, y: 0, width: w, height: h)
         gif.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
-        gifView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: 70, height: h)
     }
 }

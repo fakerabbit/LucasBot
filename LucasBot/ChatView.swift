@@ -51,23 +51,6 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
     }
     
-    var newBotMessage: Message! {
-        didSet {
-            debugPrint("new bot message:")
-            self.collectionView.performBatchUpdates({
-                let row:Int = self.messages.count
-                self.messages.append(self.newBotMessage)
-                self.collectionView.insertItems(at: [IndexPath(row: row, section: 0)])
-            }, completion: { finished in
-                var row:Int = self.messages.count - 1
-                if row < 0 {
-                    row = 0
-                }
-                self.collectionView.scrollToItem(at: IndexPath(row: row, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
-            })
-        }
-    }
-    
     lazy var chatInput: ChatInput! = {
         let input: ChatInput = ChatInput(frame: CGRect.zero)
         return input
@@ -79,6 +62,11 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         view.isUserInteractionEnabled = false
         view.layer.cornerRadius = 10.0;
         view.layer.masksToBounds = false;
+        return view
+    }()
+    
+    lazy var typing: TypingView! = {
+       let view = TypingView(frame: CGRect.zero)
         return view
     }()
     
@@ -104,6 +92,9 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         let dotW: CGFloat = w * 2
         let dotH: CGFloat = h * 2
         greenDot.frame = CGRect(x: w - dotW, y: h - dotH, width: dotW, height: dotH)
+        
+        self.addSubview(typing)
+        typing.frame.origin = CGPoint(x: 0, y: h)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -140,7 +131,6 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
             //debugPrint("text for gifWidth 0:")
             //debugPrint(message.text)
         }
-        cell.typing = message.typing
         
         return cell
     }
@@ -190,5 +180,20 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
             self.greenDot.removeFromSuperview()
             self.chatInput.animateSendBtn()
         })
+    }
+    
+    func animateTyping(anim: Bool) {
+        if anim  == true {
+            self.chatInput.animateTyping(anim: anim)
+            UIView.animate(withDuration: 1.0, animations: {
+                self.typing.frame.origin = CGPoint(x: 0, y: self.frame.size.height - self.typing.frame.size.height)
+            }, completion: nil)
+        }
+        else {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.typing.frame.origin = CGPoint(x: 0, y: self.frame.size.height + self.typing.frame.size.height)
+            }, completion: nil)
+            self.chatInput.animateTyping(anim: anim)
+        }
     }
 }

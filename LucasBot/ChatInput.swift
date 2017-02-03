@@ -162,4 +162,18 @@ class ChatInput: UIView, UITextFieldDelegate {
             self.sendBtn.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }
+    
+    func animateTyping(anim: Bool) {
+        input.resignFirstResponder()
+        if anim  == true {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.frame.origin = CGPoint(x: 0, y: (self.superview?.frame.size.height)! + self.kChatInputHeight)
+            }, completion: nil)
+        }
+        else {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.frame.origin = CGPoint(x: 0, y: (self.superview?.frame.size.height)! - self.kChatInputHeight)
+            }, completion: nil)
+        }
+    }
 }

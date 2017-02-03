@@ -226,11 +226,13 @@ class BotMgr {
     }
     
     private func processBotMessage(message: Message) {
+        let typing = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: true)
+        self.queue.append(typing)
         self.queue.append(message)
     }
     
     private func startQueue() {
-        let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { (timer) in
+        let timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { (timer) in
             //debugPrint("timer awake...")
             if self.queue.count > 0 {
                 let message:Message = self.queue.removeFirst()

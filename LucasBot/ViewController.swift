@@ -32,13 +32,11 @@ class ViewController: BotViewController {
         BotMgr.sharedInstance.initBot()
         chatView.animateView()
         BotMgr.sharedInstance.onMessage = { [weak self] message in
-            debugPrint("bot manager received message...")
-            if message.type == "user" {
+            //debugPrint("bot manager received message...")
+            if message.typing != true {
                 self?.chatView.newMessage = message
             }
-            else {
-                self?.chatView.newBotMessage = message
-            }
+            self?.chatView.animateTyping(anim: message.typing)
         }
     }
 
