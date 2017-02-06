@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class BotMgr {
     
@@ -18,12 +19,16 @@ class BotMgr {
     typealias BotMgrOnMessage = (Message) -> Void
     var onMessage: BotMgrOnMessage = { message in }
     private var queue:[Message] = []
+    var currentView: UIView?
+    private let loading: Loading = Loading(frame: CGRect.zero)
     
     func initBot() {
+        self.animateLoading(anim: true)
         let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false)
         self.onMessage(message)
         self.startQueue()
         NetworkMgr.sharedInstance.initSocket() { connected in
+            self.animateLoading(anim: false)
             if connected == true {
                 self.sendMessageToBot(message: "Hello")
                 //Wit.sharedInstance().interpretString("Hello", customData: nil)
@@ -56,8 +61,10 @@ class BotMgr {
     
     func signUp(email: String, password: String, callback: @escaping BotMgrSignUpCallback) {
         
+        self.animateLoading(anim: true)
         NetworkMgr.sharedInstance.postUser(email: email, password: password) { response in
             
+            self.animateLoading(anim: false)
             if response != nil {
                 DataMgr.sharedInstance.storeUser(email: email, password: password) { user in
                     if let _:EUser = user {
@@ -240,5 +247,28 @@ class BotMgr {
             }
         }
         RunLoop.current.add(timer, forMode: .commonModes)
+    }
+    
+    // MARK:- Animations
+    
+    func animateLoading(anim: Bool) {
+        
+        if anim == true {
+            loading.isHidden = true
+            let w = self.currentView?.frame.size.width
+            let h = self.currentView?.frame.size.height
+            self.loading.frame.origin = CGPoint(x: w!/2 - self.loading.frame.size.width/2, y: h!/2 - self.loading.frame.size.height/2)
+            self.currentView?.addSubview(loading)
+            UIView.animate(withDuration: 2.0, animations: {
+                self.loading.isHidden = false
+            }, completion: nil)
+        }
+        else {
+            UIView.animate(withDuration: 2.0, animations: {
+                self.loading.isHidden = true
+            }, completion: { [weak self] finished in
+                self?.loading.removeFromSuperview()
+            })
+        }
     }
 }

@@ -19,6 +19,7 @@ class LoginVC: BotViewController {
     
     override func loadView() {
         super.loadView()
+        BotMgr.sharedInstance.currentView = self.loginView
         self.view = self.loginView
     }
     
@@ -31,7 +32,7 @@ class LoginVC: BotViewController {
         loginView.onSignUp = { [weak self] email, password in
             
             if email != nil && password != nil {
-                BotMgr.sharedInstance.signUp(email: email!, password: password!) { result in
+                BotMgr.sharedInstance.signUp(email: email!, password: password!) { [weak self] result in
                     
                     if result {
                         debugPrint("sign up SUCCESS")

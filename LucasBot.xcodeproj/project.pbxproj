@@ -23,6 +23,7 @@
 		AC12680D1E2326B000F3344B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680C1E2326B000F3344B /* ChatView.swift */; };
 		AC1268101E232FA400F3344B /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680F1E232FA400F3344B /* DataMgr.swift */; };
 		AC1268121E23338F00F3344B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1268111E23338F00F3344B /* ChatCell.swift */; };
+		AC48C7E41E490ACE00735FD4 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48C7E31E490ACE00735FD4 /* Loading.swift */; };
 		AC5C221E1E4257580009A8E2 /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C221D1E4257580009A8E2 /* LoginInput.swift */; };
 		AC5C22201E425AEB0009A8E2 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */; };
 		AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A471E400CC700024F40 /* ChatTextView.swift */; };
@@ -58,6 +59,7 @@
 		AC12680C1E2326B000F3344B /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AC12680F1E232FA400F3344B /* DataMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
 		AC1268111E23338F00F3344B /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		AC48C7E31E490ACE00735FD4 /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		AC5C221D1E4257580009A8E2 /* LoginInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
 		AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		AC646A471E400CC700024F40 /* ChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				AC646A471E400CC700024F40 /* ChatTextView.swift */,
 				AC036AF31E4421D500D19A2B /* TypingView.swift */,
 				AC646A491E40182C00024F40 /* Avatar.swift */,
+				AC48C7E31E490ACE00735FD4 /* Loading.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */,
 				AC12680D1E2326B000F3344B /* ChatView.swift in Sources */,
 				AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */,
+				AC48C7E41E490ACE00735FD4 /* Loading.swift in Sources */,
 				AC646A4A1E40182C00024F40 /* Avatar.swift in Sources */,
 				AC1268121E23338F00F3344B /* ChatCell.swift in Sources */,
 				AC1268101E232FA400F3344B /* DataMgr.swift in Sources */,

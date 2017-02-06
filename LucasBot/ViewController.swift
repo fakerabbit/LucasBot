@@ -18,6 +18,7 @@ class ViewController: BotViewController {
     
     override func loadView() {
         super.loadView()
+        BotMgr.sharedInstance.currentView = self.chatView
         self.view = self.chatView
         chatView.chatInput?.onMessage = { message in
             if message != nil {
