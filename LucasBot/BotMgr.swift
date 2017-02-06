@@ -20,7 +20,7 @@ class BotMgr {
     var onMessage: BotMgrOnMessage = { message in }
     private var queue:[Message] = []
     var currentView: UIView?
-    private let loading: Loading = Loading(frame: CGRect.zero)
+    private var loading: Loading!
     
     func initBot() {
         self.animateLoading(anim: true)
@@ -72,12 +72,14 @@ class BotMgr {
                     }
                     else {
                         debugPrint("store user failed")
+                        self.showAlert(text: "There was a problem connecting to the bot. Please try again.")
                         callback(false)
                     }
                 }
             }
             else {
                 debugPrint("post user failed")
+                self.showAlert(text: "There was a problem connecting to the bot. Please make sure you are connected to the internet and try again.")
                 callback(false)
             }
         }
@@ -254,6 +256,7 @@ class BotMgr {
     func animateLoading(anim: Bool) {
         
         if anim == true {
+            loading = Loading(frame: CGRect.zero)
             loading.isHidden = true
             let w = self.currentView?.frame.size.width
             let h = self.currentView?.frame.size.height
@@ -270,5 +273,26 @@ class BotMgr {
                 self?.loading.removeFromSuperview()
             })
         }
+    }
+    
+    func showAlert(text: String) {
+        
+        let alert = Alert(frame: CGRect.zero)
+        alert.alert = text
+        alert.isHidden = true
+        self.currentView?.addSubview(alert)
+        UIView.animate(withDuration: 3.0, animations: {
+            alert.isHidden = false
+        }, completion: { finished in
+            
+            let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { (timer) in
+                UIView.animate(withDuration: 3.0, animations: {
+                    alert.isHidden = true
+                }, completion: { finished in
+                    alert.removeFromSuperview()
+                })
+            }
+            RunLoop.current.add(timer, forMode: .commonModes)
+        })
     }
 }
