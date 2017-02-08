@@ -30,7 +30,7 @@ class ChatInput: UIView, UITextFieldDelegate {
         textfield.backgroundColor = UIColor.white
         textfield.textColor = Utils.chatUserColor()
         textfield.returnKeyType = .go
-        textfield.placeholder = "Ask bot..."
+        textfield.placeholder = "Ask TriviaBot..."
         textfield.layer.cornerRadius = 3.0;
         textfield.layer.masksToBounds = false;
         return textfield
