@@ -32,9 +32,7 @@ struct Utils {
      
      ** San Francisco Display
      SanFranciscoDisplay-Regular
-     SanFranciscoDisplay-Light
      SanFranciscoDisplay-Medium
-     SanFranciscoDisplay-Bold
      */
     
     static func printFontNamesInSystem() {

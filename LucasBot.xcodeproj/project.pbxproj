@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		02F656EB95729CA828EED01D /* Pods_LucasBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50B966E5C875AC22C8929AB /* Pods_LucasBot.framework */; };
-		AC036AEC1E43874100D19A2B /* SanFranciscoDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AE91E43874100D19A2B /* SanFranciscoDisplay-Bold.otf */; };
-		AC036AED1E43874100D19A2B /* SanFranciscoDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEA1E43874100D19A2B /* SanFranciscoDisplay-Light.otf */; };
 		AC036AEE1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */; };
 		AC036AF01E43955C00D19A2B /* wave-chat.gif in Resources */ = {isa = PBXBuildFile; fileRef = AC036AEF1E43955C00D19A2B /* wave-chat.gif */; };
 		AC036AF21E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */; };
@@ -43,8 +41,6 @@
 /* Begin PBXFileReference section */
 		26C5C08354695B600C484205 /* Pods-LucasBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucasBot/Pods-LucasBot.debug.xcconfig"; sourceTree = "<group>"; };
 		8ECE106FD0019094AB64ABF3 /* Pods-LucasBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-LucasBot/Pods-LucasBot.release.xcconfig"; sourceTree = "<group>"; };
-		AC036AE91E43874100D19A2B /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Bold.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
-		AC036AEA1E43874100D19A2B /* SanFranciscoDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Light.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Light.otf"; sourceTree = "<group>"; };
 		AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Regular.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
 		AC036AEF1E43955C00D19A2B /* wave-chat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "wave-chat.gif"; path = "Assets/wave-chat.gif"; sourceTree = "<group>"; };
 		AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Medium.otf"; path = "Assets/Fonts/SanFranciscoDisplay-Medium.otf"; sourceTree = "<group>"; };
@@ -202,9 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				AC036AEF1E43955C00D19A2B /* wave-chat.gif */,
-				AC036AE91E43874100D19A2B /* SanFranciscoDisplay-Bold.otf */,
 				AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */,
-				AC036AEA1E43874100D19A2B /* SanFranciscoDisplay-Light.otf */,
 				AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */,
 			);
 			name = Assets;
@@ -282,11 +276,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC036AEC1E43874100D19A2B /* SanFranciscoDisplay-Bold.otf in Resources */,
 				AC036AF01E43955C00D19A2B /* wave-chat.gif in Resources */,
 				AC036AF21E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf in Resources */,
 				AC036AEE1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf in Resources */,
-				AC036AED1E43874100D19A2B /* SanFranciscoDisplay-Light.otf in Resources */,
 				AC1268001E22EE2E00F3344B /* LaunchScreen.storyboard in Resources */,
 				AC1267FD1E22EE2E00F3344B /* Assets.xcassets in Resources */,
 			);
