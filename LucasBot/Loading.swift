@@ -22,10 +22,10 @@ class Loading: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: size, height: size))
-        self.backgroundColor = Utils.greenColor()
-        self.layer.cornerRadius = 6.0;
-        self.layer.masksToBounds = false;
-        self.clipsToBounds = true
+        self.backgroundColor = UIColor.clear
+        //self.layer.cornerRadius = 6.0;
+        //self.layer.masksToBounds = false;
+        //self.clipsToBounds = true
         
         self.addSubview(loading)
     }
