@@ -116,9 +116,15 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let message = self.messages[indexPath.row]
+        var previous:Message?
+        let index = indexPath.row - 1
+        if index >= 0 {
+            previous = self.messages[indexPath.row - 1]
+        }
         
         let cell:ChatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "chatCell", for: indexPath) as! ChatCell
         cell.isUser = message.type == "user" ? true : false
+        cell.hideAvatar = self.hideAvatar(currentMsg: message, previousMsg: previous)
         cell.text = message.text
         cell.imgUrl = message.imgUrl
         cell.gifUrl = message.giphy
@@ -164,6 +170,18 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
         
         return size
+    }
+    
+    // MARK:- Private methods
+    
+    private func hideAvatar(currentMsg: Message, previousMsg: Message?) -> Bool {
+        var hide = false
+        
+        if previousMsg != nil {
+            hide = currentMsg.type == previousMsg!.type || currentMsg.type == "user"
+        }
+        
+        return hide
     }
     
     // MARK:- Animations

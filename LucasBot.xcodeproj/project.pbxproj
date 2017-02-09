@@ -27,6 +27,8 @@
 		AC5C22201E425AEB0009A8E2 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */; };
 		AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A471E400CC700024F40 /* ChatTextView.swift */; };
 		AC646A4A1E40182C00024F40 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A491E40182C00024F40 /* Avatar.swift */; };
+		AC78D1A51E4BE7230076D211 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A41E4BE7230076D211 /* SplashVC.swift */; };
+		AC78D1A71E4BE72F0076D211 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A61E4BE72F0076D211 /* SplashView.swift */; };
 		ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0ED9E1E2400B700581D4F /* BotMgr.swift */; };
 		ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA11E241CB100581D4F /* Utils.swift */; };
 		ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA31E24400C00581D4F /* ChatInput.swift */; };
@@ -62,6 +64,11 @@
 		AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		AC646A471E400CC700024F40 /* ChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextView.swift; sourceTree = "<group>"; };
 		AC646A491E40182C00024F40 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		AC78D1A41E4BE7230076D211 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		AC78D1A61E4BE72F0076D211 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		AC78D1AA1E4BEA420076D211 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		AC78D1AC1E4BEC3E0076D211 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AC78D1AE1E4BEC690076D211 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		ACE0ED9E1E2400B700581D4F /* BotMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotMgr.swift; sourceTree = "<group>"; };
 		ACE0EDA11E241CB100581D4F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ACE0EDA31E24400C00581D4F /* ChatInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInput.swift; sourceTree = "<group>"; };
@@ -89,6 +96,9 @@
 		2C0136D81D14C6265A5B768F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC78D1AE1E4BEC690076D211 /* AVKit.framework */,
+				AC78D1AC1E4BEC3E0076D211 /* AVFoundation.framework */,
+				AC78D1AA1E4BEA420076D211 /* MediaPlayer.framework */,
 				B50B966E5C875AC22C8929AB /* Pods_LucasBot.framework */,
 			);
 			name = Frameworks;
@@ -127,6 +137,7 @@
 				ACFB9A4D1E2DB1AD00A164A1 /* Assets */,
 				ACFB9A581E2DC1B100A164A1 /* Navigation */,
 				ACFB9A481E2D973700A164A1 /* Login */,
+				AC78D1A31E4BE7040076D211 /* Splash */,
 				ACE0EDA01E241CA600581D4F /* Utils */,
 				ACE0ED9D1E2400AE00581D4F /* BotMgr */,
 				AC12680E1E232F9000F3344B /* DataMgr */,
@@ -157,6 +168,15 @@
 				AC12680F1E232FA400F3344B /* DataMgr.swift */,
 			);
 			name = DataMgr;
+			sourceTree = "<group>";
+		};
+		AC78D1A31E4BE7040076D211 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				AC78D1A41E4BE7230076D211 /* SplashVC.swift */,
+				AC78D1A61E4BE72F0076D211 /* SplashView.swift */,
+			);
+			name = Splash;
 			sourceTree = "<group>";
 		};
 		ACE0ED9D1E2400AE00581D4F /* BotMgr */ = {
@@ -341,9 +361,11 @@
 			files = (
 				AC1267FB1E22EE2E00F3344B /* LucasBot.xcdatamodeld in Sources */,
 				ACFB9A5E1E2DD38D00A164A1 /* RedTextField.swift in Sources */,
+				AC78D1A71E4BE72F0076D211 /* SplashView.swift in Sources */,
 				ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */,
 				AC48C7E61E49315E00735FD4 /* Alert.swift in Sources */,
 				ACE0EDA61E2485FA00581D4F /* ChatTextField.swift in Sources */,
+				AC78D1A51E4BE7230076D211 /* SplashVC.swift in Sources */,
 				ACFB9A4A1E2D975900A164A1 /* LoginVC.swift in Sources */,
 				AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */,
 				AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */,

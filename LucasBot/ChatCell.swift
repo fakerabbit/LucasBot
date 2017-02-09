@@ -29,6 +29,13 @@ class ChatCell: UICollectionViewCell {
         }
     }
     
+    var hideAvatar: Bool! {
+        didSet {
+            avatar.isHidden = hideAvatar
+            self.setNeedsLayout()
+        }
+    }
+    
     var text:String! {
         didSet {
             //debugPrint("text didSet: ", text)
