@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SDWebImage
+import SwiftyGif
 
 class ChatCell: UICollectionViewCell {
     
@@ -77,6 +78,36 @@ class ChatCell: UICollectionViewCell {
         }
     }
     
+    var typing: Bool! {
+        didSet {
+            if typing == true {
+                self.textView.text = ""
+                self.textView.isHidden = true
+                self.gif.isHidden = true
+                self.gif.stopLoading()
+                self.typingView.isHidden = false
+                self.typingView.setGifImage(gifImage, manager: gifManager)
+                self.typingView.startAnimatingGif()
+                avatar.isHidden = false
+            }
+            else {
+                self.textView.isHidden = false
+                self.typingView.isHidden = true
+                self.typingView.stopAnimatingGif()
+            }
+        }
+    }
+    
+    lazy var gifManager: SwiftyGifManager! = {
+        let manager = SwiftyGifManager(memoryLimit:20)
+        return manager
+    }()
+    
+    lazy var gifImage: UIImage! = {
+        let gf = UIImage(gifName: Utils.kDefaultGif)
+        return gf
+    }()
+    
     var gifUrl:String! {
         didSet {
             if gifUrl != nil {
@@ -106,6 +137,7 @@ class ChatCell: UICollectionViewCell {
     private let imageView: UIImageView = UIImageView(frame: CGRect.zero)
     private let gif: UIWebView = UIWebView(frame: CGRect.zero)
     private let avatar = Avatar(frame: CGRect.zero)
+    private let typingView = UIImageView(frame: CGRect.zero)
     private let pad: CGFloat = 10.0
     
     // MARK:- Init
@@ -117,6 +149,9 @@ class ChatCell: UICollectionViewCell {
         self.contentView.addSubview(avatar)
         
         self.contentView.addSubview(textView)
+        
+        typingView.contentMode = .scaleAspectFit
+        self.contentView.addSubview(typingView)
         
         imageView.backgroundColor = UIColor.clear
         imageView.contentMode = .scaleAspectFit
@@ -163,5 +198,6 @@ class ChatCell: UICollectionViewCell {
         
         imageView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
         gif.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
+        typingView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: 70, height: h)
     }
 }

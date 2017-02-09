@@ -235,7 +235,7 @@ class BotMgr {
     }
     
     private func processBotMessage(message: Message) {
-        let typing = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: true)
+        let typing = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: "35", typing: true)
         self.queue.append(typing)
         self.queue.append(message)
     }

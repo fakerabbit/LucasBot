@@ -51,6 +51,31 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
     }
     
+    var newBotMessage: Message! {
+        didSet {
+            var completeRow:Int = 0
+            self.collectionView.performBatchUpdates({
+                let row:Int = self.messages.count - 1
+                if (row >= 0) {
+                    let _ = self.messages.popLast()
+                    self.messages.append(self.newBotMessage)
+                    self.collectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
+                    completeRow = row
+                }
+                else {
+                    self.messages.append(self.newBotMessage)
+                    self.collectionView.insertItems(at: [IndexPath(row: row, section: 0)])
+                    completeRow = row - 1
+                }
+            }, completion: { finished in
+                if completeRow < 0 {
+                    completeRow = 0
+                }
+                self.collectionView.scrollToItem(at: IndexPath(row: completeRow, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
+            })
+        }
+    }
+    
     lazy var chatInput: ChatInput! = {
         let input: ChatInput = ChatInput(frame: CGRect.zero)
         return input
@@ -128,6 +153,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.text = message.text
         cell.imgUrl = message.imgUrl
         cell.gifUrl = message.giphy
+        cell.typing = message.typing
         if let width: String = message.width {
             let w = NumberFormatter().number(from: width)!.floatValue
             cell.gifWidth = CGFloat(w)
