@@ -214,7 +214,7 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func animateView() {
         
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             
             let w = self.frame.size.width
             let h = self.frame.size.height
@@ -228,14 +228,14 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
     func animateTyping(anim: Bool) {
         if anim  == true {
             self.chatInput.animateTyping(anim: anim)
-            UIView.animate(withDuration: 1.0, animations: {
+            /*UIView.animate(withDuration: 1.0, animations: {
                 self.typing.frame.origin = CGPoint(x: 0, y: self.frame.size.height - self.typing.frame.size.height)
-            }, completion: nil)
+            }, completion: nil)*/
         }
         else {
-            UIView.animate(withDuration: 1.0, animations: {
+           /* UIView.animate(withDuration: 1.0, animations: {
                 self.typing.frame.origin = CGPoint(x: 0, y: self.frame.size.height + self.typing.frame.size.height)
-            }, completion: nil)
+            }, completion: nil)*/
             self.chatInput.animateTyping(anim: anim)
         }
     }

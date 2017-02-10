@@ -40,7 +40,7 @@ class ViewController: BotViewController {
             else {
                 self?.chatView.newBotMessage = message
             }
-            //self?.chatView.animateTyping(anim: message.typing)
+            self?.chatView.animateTyping(anim: message.typing)
         }
     }
 
