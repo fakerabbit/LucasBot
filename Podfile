@@ -7,4 +7,5 @@ target 'LucasBot' do
     pod 'SwiftKeychainWrapper'
     pod 'Socket.IO-Client-Swift', '~> 8.2.0'
     pod 'SDWebImage', '~>3.7'
+    pod 'lottie-ios'
 end

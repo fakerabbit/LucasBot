@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import Lottie
 
-class SplashVC: UIViewController {
+class SplashVC: BotViewController {
     
     lazy var splashView:SplashView! = {
         let frame = UIScreen.main.bounds
@@ -25,6 +26,17 @@ class SplashVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        splashView.animationView?.play(completion: { [weak self] (finished) in
+            // Do Something
+            
+            UIView.animate(withDuration: 1.0, animations: {
+                
+                self?.splashView.animationView?.frame.origin = CGPoint(x: 0, y: (self?.splashView.frame.size.height)!)
+            }, completion: { finished in
+                let vc = LoginVC()
+                self?.nav?.viewControllers = [vc]
+            })
+        })
     }
     
     override func didReceiveMemoryWarning() {

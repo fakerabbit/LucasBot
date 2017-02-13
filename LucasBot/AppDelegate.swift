@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.darkGray
         
-        let vc = LoginVC()
+        let vc = SplashVC()
         let nav:NavController = NavController(rootViewController: vc)
         window?.rootViewController = nav
         

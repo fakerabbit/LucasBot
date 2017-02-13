@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.2.0)
+  - lottie-ios (1.0.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -9,6 +10,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.2)
+  - lottie-ios
   - SDWebImage (~> 3.7)
   - Socket.IO-Client-Swift (~> 8.2.0)
   - SwiftKeychainWrapper
@@ -16,11 +18,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  lottie-ios: 8564a52e01a29c180ded076cb059aae8ec378cf1
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   Socket.IO-Client-Swift: 900cf511777045c80d1ce1f11f71261e87765dd1
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwiftyGif: d6b4d63de2a2a5134d8b54ba5719837319d77ef0
 
-PODFILE CHECKSUM: 97f4d82d43845f61d810439196abc7bede831b55
+PODFILE CHECKSUM: 912a0da538c9d5ad432e0f2d2acf5b28e77900de
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
