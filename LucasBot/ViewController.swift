@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ViewController: BotViewController {
     
@@ -23,6 +24,20 @@ class ViewController: BotViewController {
         chatView.chatInput?.onMessage = { message in
             if message != nil {
                 BotMgr.sharedInstance.sendMessage(msg: message!)
+            }
+        }
+        chatView.onButton = { button in
+            if button != nil {
+                if button?.payload != nil {
+                    BotMgr.sharedInstance.sendPayload(button: button!)
+                }
+                else if button?.url != nil {
+                    //UIApplication.shared.open(URL(string: "http://www.stackoverflow.com")!, options: [:], completionHandler: nil)
+                    if let requestUrl = NSURL(string: button!.url!) {
+                        let svc = SFSafariViewController(url: requestUrl as URL)
+                        self.present(svc, animated: true, completion: nil)
+                    }
+                }
             }
         }
     }

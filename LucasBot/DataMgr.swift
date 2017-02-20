@@ -25,6 +25,20 @@ struct Message {
     var width: String?
     var height: String?
     var typing: Bool = false
+    var menu: Menu?
+    var gallery: Menu?
+}
+
+struct Menu {
+    var title: String?
+    var buttons: [MenuButton]?
+}
+
+struct MenuButton {
+    var title: String?
+    var payload: String?
+    var url: String?
+    var imgUrl: String?
 }
 
 enum Keys:String {

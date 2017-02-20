@@ -133,6 +133,41 @@ class ChatCell: UICollectionViewCell {
         }
     }
     
+    var menu: Menu! {
+        didSet {
+            if menu != nil {
+                self.menuView.title = menu.title
+                self.menuView.buttons = menu.buttons
+                self.menuView.isHidden = false
+                self.textView.isHidden = true
+            }
+            else {
+                self.menuView.isHidden = true
+                self.menuView.title = nil
+                self.menuView.buttons = nil
+                self.textView.isHidden = self.text.characters.count == 0
+            }
+        }
+    }
+    
+    var gallery: Menu! {
+        didSet {
+            if gallery != nil {
+                self.galleryView.itemW = gifWidth
+                self.galleryView.content = gallery
+                self.galleryView.isHidden = false
+                self.textView.isHidden = true
+            }
+            else {
+                self.galleryView.isHidden = true
+                self.galleryView.content = nil
+                self.textView.isHidden = self.text.characters.count == 0
+            }
+        }
+    }
+    
+    let menuView = MenuCell(frame: CGRect.zero)
+    let galleryView = Gallery(frame: CGRect.zero)
     private let textView: ChatTextView = ChatTextView(frame: CGRect.zero)
     private let imageView: UIImageView = UIImageView(frame: CGRect.zero)
     private let gif: UIWebView = UIWebView(frame: CGRect.zero)
@@ -170,6 +205,9 @@ class ChatCell: UICollectionViewCell {
         gif.clipsToBounds = true
         self.contentView.addSubview(gif)
         
+        self.contentView.addSubview(menuView)
+        self.contentView.addSubview(galleryView)
+        
         isUser = false
         text = ""
         gifWidth = 0
@@ -199,5 +237,8 @@ class ChatCell: UICollectionViewCell {
         imageView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
         gif.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
         typingView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: 70, height: h)
+        menuView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
+        galleryView.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        //galleryView.indent = avatar.frame.maxX + pad
     }
 }

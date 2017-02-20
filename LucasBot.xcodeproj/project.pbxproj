@@ -27,8 +27,12 @@
 		AC5C22201E425AEB0009A8E2 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */; };
 		AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A471E400CC700024F40 /* ChatTextView.swift */; };
 		AC646A4A1E40182C00024F40 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC646A491E40182C00024F40 /* Avatar.swift */; };
+		AC77BEEC1E5B368C00823BE7 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEEB1E5B368C00823BE7 /* Gallery.swift */; };
+		AC77BEEE1E5B372D00823BE7 /* GalleryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEED1E5B372D00823BE7 /* GalleryItem.swift */; };
+		AC77BEF01E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC77BEEF1E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf */; };
 		AC78D1A51E4BE7230076D211 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A41E4BE7230076D211 /* SplashVC.swift */; };
 		AC78D1A71E4BE72F0076D211 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A61E4BE72F0076D211 /* SplashView.swift */; };
+		AC7AFBED1E5A6D4F00F97EE9 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AFBEC1E5A6D4F00F97EE9 /* MenuCell.swift */; };
 		ACA363121E52284C002382D8 /* intro.json in Resources */ = {isa = PBXBuildFile; fileRef = ACA363111E52284C002382D8 /* intro.json */; };
 		ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0ED9E1E2400B700581D4F /* BotMgr.swift */; };
 		ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0EDA11E241CB100581D4F /* Utils.swift */; };
@@ -65,11 +69,15 @@
 		AC5C221F1E425AEB0009A8E2 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		AC646A471E400CC700024F40 /* ChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextView.swift; sourceTree = "<group>"; };
 		AC646A491E40182C00024F40 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		AC77BEEB1E5B368C00823BE7 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		AC77BEED1E5B372D00823BE7 /* GalleryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryItem.swift; sourceTree = "<group>"; };
+		AC77BEEF1E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Bold.otf"; path = "../../../../Downloads/FONTS/SanFrancisco/SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
 		AC78D1A41E4BE7230076D211 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		AC78D1A61E4BE72F0076D211 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		AC78D1AA1E4BEA420076D211 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		AC78D1AC1E4BEC3E0076D211 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AC78D1AE1E4BEC690076D211 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		AC7AFBEC1E5A6D4F00F97EE9 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		ACA363111E52284C002382D8 /* intro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = intro.json; path = Assets/intro.json; sourceTree = "<group>"; };
 		ACE0ED9E1E2400B700581D4F /* BotMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotMgr.swift; sourceTree = "<group>"; };
 		ACE0EDA11E241CB100581D4F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -203,6 +211,9 @@
 				AC646A491E40182C00024F40 /* Avatar.swift */,
 				AC48C7E31E490ACE00735FD4 /* Loading.swift */,
 				AC48C7E51E49315E00735FD4 /* Alert.swift */,
+				AC7AFBEC1E5A6D4F00F97EE9 /* MenuCell.swift */,
+				AC77BEEB1E5B368C00823BE7 /* Gallery.swift */,
+				AC77BEED1E5B372D00823BE7 /* GalleryItem.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -223,6 +234,7 @@
 				AC036AEF1E43955C00D19A2B /* wave-chat.gif */,
 				AC036AF11E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf */,
 				AC036AEB1E43874100D19A2B /* SanFranciscoDisplay-Regular.otf */,
+				AC77BEEF1E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -299,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC77BEF01E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf in Resources */,
 				AC036AF01E43955C00D19A2B /* wave-chat.gif in Resources */,
 				AC036AF21E43983C00D19A2B /* SanFranciscoDisplay-Medium.otf in Resources */,
 				ACA363121E52284C002382D8 /* intro.json in Resources */,
@@ -373,6 +386,7 @@
 				ACFB9A4A1E2D975900A164A1 /* LoginVC.swift in Sources */,
 				AC646A481E400CC700024F40 /* ChatTextView.swift in Sources */,
 				AC1267F51E22EE2D00F3344B /* ViewController.swift in Sources */,
+				AC77BEEC1E5B368C00823BE7 /* Gallery.swift in Sources */,
 				ACFB9A5C1E2DC30800A164A1 /* BotViewController.swift in Sources */,
 				ACE0EDA21E241CB100581D4F /* Utils.swift in Sources */,
 				AC5C22201E425AEB0009A8E2 /* LoginTextField.swift in Sources */,
@@ -385,6 +399,8 @@
 				AC1268121E23338F00F3344B /* ChatCell.swift in Sources */,
 				AC1268101E232FA400F3344B /* DataMgr.swift in Sources */,
 				AC036AF41E4421D500D19A2B /* TypingView.swift in Sources */,
+				AC77BEEE1E5B372D00823BE7 /* GalleryItem.swift in Sources */,
+				AC7AFBED1E5A6D4F00F97EE9 /* MenuCell.swift in Sources */,
 				ACFB9A4C1E2D976000A164A1 /* LoginView.swift in Sources */,
 				ACE0EDA41E24400C00581D4F /* ChatInput.swift in Sources */,
 				AC12680B1E22FED200F3344B /* NetworkMgr.swift in Sources */,

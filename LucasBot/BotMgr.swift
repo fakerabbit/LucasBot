@@ -24,7 +24,7 @@ class BotMgr {
     
     func initBot() {
         self.animateLoading(anim: true)
-        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false)
+        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
         self.onMessage(message)
         self.startQueue()
         NetworkMgr.sharedInstance.initSocket() { connected in
@@ -39,23 +39,62 @@ class BotMgr {
     // MARK:- API
     
     func sendMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
         self.onMessage(message)
         self.sendMessageToBot(message: msg)
     }
     
+    func sendPayload(button: MenuButton) {
+        let message = Message(msgId: NSUUID().uuidString, text: button.title, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
+        self.onMessage(message)
+        self.sendPayloadToBot(message: button.payload!)
+    }
+    
     func sendSocketMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
         self.processBotMessage(message: message)
     }
     
     func sendSocketImage(imgUrl: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl, giphy: nil, width: nil, height: nil, typing: false)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
         self.processBotMessage(message: message)
     }
     
     func sendSocketGif(url: String, width: String, height: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: url, width: width, height: height, typing: false)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: url, width: width, height: height, typing: false, menu: nil, gallery: nil)
+        self.processBotMessage(message: message)
+    }
+    
+    func sendSocketMenu(title: String, buttons: [Any], width: String, height: String) {
+        var menuButtons: [MenuButton] = []
+        let count = buttons.count
+        Utils.menuItemHeight = height
+        Utils.menuItemWidth = width
+        let heightValue = ((height as NSString).intValue + Int(Utils.interBubbleSpace)) * (count + 1)
+        for i in 0 ..< count {
+            if let b = buttons[i] as? NSDictionary {
+                let mb = MenuButton(title: b.object(forKey: "title") as! String?, payload: b.object(forKey: "payload") as! String?, url: b.object(forKey: "url") as! String?, imgUrl: nil)
+                menuButtons.append(mb)
+            }
+        }
+        let menu = Menu(title: title, buttons: menuButtons)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: width, height: heightValue.description, typing: false, menu: menu, gallery: nil)
+        self.processBotMessage(message: message)
+    }
+    
+    func sendSocketGallery(buttons: [Any], width: String, height: String) {
+        var menuButtons: [MenuButton] = []
+        let count = buttons.count
+        Utils.galleryItemWidth = width
+        Utils.galleryItemHeight = height
+        for i in 0 ..< count {
+            if let b = buttons[i] as? NSDictionary {
+                let mb = MenuButton(title: b.object(forKey: "title") as! String?, payload: b.object(forKey: "payload") as! String?, url: b.object(forKey: "url") as! String?, imgUrl: b.object(forKey: "imageUrl") as! String?)
+                menuButtons.append(mb)
+            }
+        }
+        let gallery = Menu(title: nil, buttons: menuButtons)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: width, height: height, typing: false, menu: nil, gallery: gallery)
         self.processBotMessage(message: message)
     }
     
@@ -212,6 +251,17 @@ class BotMgr {
         }
     }
     
+    private func sendPayloadToBot(message: String) {
+        NetworkMgr.sharedInstance.sendPayload(msg: message) { message in
+            if message != nil {
+                
+            }
+            else {
+                debugPrint("failed sendPayloadToBot")
+            }
+        }
+    }
+    
     private func processBotResponse(message: Message) {
         
         if let type:String = message.type {
@@ -235,7 +285,7 @@ class BotMgr {
     }
     
     private func processBotMessage(message: Message) {
-        let typing = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: "35", typing: true)
+        let typing = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: "35", typing: true, menu: nil, gallery: nil)
         self.queue.append(typing)
         self.queue.append(message)
     }

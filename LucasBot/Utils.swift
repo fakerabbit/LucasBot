@@ -33,6 +33,7 @@ struct Utils {
      ** San Francisco Display
      SanFranciscoDisplay-Regular
      SanFranciscoDisplay-Medium
+     SanFranciscoDisplay-Bold
      */
     
     static func printFontNamesInSystem() {
@@ -59,6 +60,10 @@ struct Utils {
     
     static func buttonFont() -> UIFont {
         return UIFont(name: "SanFranciscoDisplay-Medium", size: 18.0)!
+    }
+    
+    static func boldFont() -> UIFont {
+        return UIFont(name: "SanFranciscoDisplay-Bold", size: 18.0)!
     }
     
     /*
@@ -110,4 +115,14 @@ struct Utils {
      */
     
     static let kDefaultGif:String = "wave-chat"
+    
+    /*
+     * MARK:- VALUES
+     */
+    
+    static var interBubbleSpace: CGFloat = 20.00
+    static var menuItemHeight = "40"
+    static var menuItemWidth = "200"
+    static var galleryItemHeight = "200"
+    static var galleryItemWidth = "200"
 }

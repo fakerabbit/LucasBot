@@ -11,11 +11,14 @@ import UIKit
 
 class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    typealias ChatViewOnButton = (MenuButton?) -> Void
+    var onButton: ChatViewOnButton = { button in }
+    
     lazy var collectionView: UICollectionView! = {
         let frame = self.frame
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 20.0
+        layout.minimumLineSpacing = Utils.interBubbleSpace
         let cv: UICollectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         cv.backgroundColor = self.backgroundColor
         cv.alwaysBounceVertical = true
@@ -162,6 +165,15 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
             cell.gifWidth = 0
             //debugPrint("text for gifWidth 0:")
             //debugPrint(message.text)
+        }
+        cell.menu = message.menu
+        cell.gallery = message.gallery
+        
+        cell.menuView.onButton = { button in
+            self.onButton(button)
+        }
+        cell.galleryView.onButton = { button in
+            self.onButton(button)
         }
         
         return cell

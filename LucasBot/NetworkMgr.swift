@@ -13,6 +13,7 @@ import SocketIO
 class NetworkMgr {
     
     let MESSAGE_API_URL = "http://localhost:3000/bot/send?text="
+    let PAYLOAD_API_URL = "http://localhost:3000/bot/payload?text="
     let SIGN_UP_URL = "http://localhost:3000/user"
     let POST_CLIENT_URL = "http://localhost:3000/clients"
     let AUTHORIZE_TRANSACTION_URL = "http://localhost:3000/oauth2/authorize?"
@@ -56,6 +57,14 @@ class NetworkMgr {
                     let height = obj.object(forKey: "height") as? String
                     BotMgr.sharedInstance.sendSocketGif(url: giphy, width: width!, height: height!)
                 }
+                else if let menu = obj.object(forKey: "menu") as? NSDictionary {
+                    //debugPrint("menu: ", menu)
+                    BotMgr.sharedInstance.sendSocketMenu(title: menu.object(forKey: "title") as! String, buttons: menu.object(forKey: "buttons") as! [Any], width: obj.object(forKey: "width") as! String, height: obj.object(forKey: "height") as! String)
+                }
+                else if let gallery = obj.object(forKey: "gallery") as? NSDictionary {
+                    //debugPrint("gallery: ", gallery)
+                    BotMgr.sharedInstance.sendSocketGallery(buttons: gallery.object(forKey: "buttons") as! [Any], width: obj.object(forKey: "width") as! String, height: obj.object(forKey: "height") as! String)
+                }
             }
         }
         
@@ -64,7 +73,7 @@ class NetworkMgr {
     
     // MARK:- REST API
     
-    /// sendMessage(msg: String): Sends a message to Wit
+    /// sendMessage(msg: String): Sends a message to Backend
     func sendMessage(msg: String, callback: @escaping NetworkMgrReqCallback) {
         
         let msgUrl = MESSAGE_API_URL + msg.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
@@ -74,7 +83,26 @@ class NetworkMgr {
         }
         
         Alamofire.request(msgUrl, headers: headers).response { response in
-            debugPrint("got response from Wit:")
+            debugPrint("got response from Backend:")
+            //debugPrint(response)
+            var res: String?
+            if response.error == nil {
+                res = "success"
+            }
+            callback(res)
+        }
+    }
+    
+    func sendPayload(msg: String, callback: @escaping NetworkMgrReqCallback) {
+        
+        let msgUrl = PAYLOAD_API_URL + msg.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
+        var headers: HTTPHeaders = [:]
+        if let authorizationHeader = Request.authorizationHeader(user: DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!, password: DataMgr.sharedInstance.getKey(key: Keys.password.rawValue)!) {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        Alamofire.request(msgUrl, headers: headers).response { response in
+            debugPrint("got response from Payload:")
             //debugPrint(response)
             var res: String?
             if response.error == nil {
