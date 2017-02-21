@@ -26,7 +26,7 @@ class ViewController: BotViewController {
                 BotMgr.sharedInstance.sendMessage(msg: message!)
             }
         }
-        chatView.onButton = { button in
+        chatView.onButton = { [weak self] button in
             if button != nil {
                 if button?.payload != nil {
                     BotMgr.sharedInstance.sendPayload(button: button!)
@@ -35,7 +35,7 @@ class ViewController: BotViewController {
                     //UIApplication.shared.open(URL(string: "http://www.stackoverflow.com")!, options: [:], completionHandler: nil)
                     if let requestUrl = NSURL(string: button!.url!) {
                         let svc = SFSafariViewController(url: requestUrl as URL)
-                        self.present(svc, animated: true, completion: nil)
+                        self?.present(svc, animated: true, completion: nil)
                     }
                 }
             }
@@ -45,6 +45,7 @@ class ViewController: BotViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        chatView.chatInput?.nav = self.nav
         BotMgr.sharedInstance.initBot()
         chatView.animateView()
         BotMgr.sharedInstance.onMessage = { [weak self] message in
@@ -56,6 +57,22 @@ class ViewController: BotViewController {
                 self?.chatView.newBotMessage = message
             }
             self?.chatView.animateTyping(anim: message.typing)
+        }
+        chatView.chatInput?.pop.onCell = { [weak self] button in
+
+            if button != nil {
+                if button?.payload != nil {
+                    BotMgr.sharedInstance.sendPayload(button: button!)
+                }
+                else if button?.url != nil {
+                    //UIApplication.shared.open(URL(string: "http://www.stackoverflow.com")!, options: [:], completionHandler: nil)
+                    if let requestUrl = NSURL(string: button!.url!) {
+                        let svc = SFSafariViewController(url: requestUrl as URL)
+                        self?.present(svc, animated: true, completion: nil)
+                    }
+                }
+            }
+            self?.chatView.chatInput?.hideMenu()
         }
     }
 

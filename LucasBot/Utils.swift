@@ -110,11 +110,17 @@ struct Utils {
         return UIColor(colorLiteralRed: 177/255, green: 203/255, blue: 70/255, alpha: 1.0)
     }
     
+    static func lineColor() -> UIColor {
+        return UIColor(colorLiteralRed: 227/255, green: 229/255, blue: 230/255, alpha: 1.0)
+    }
+    
     /*
      * MARK:- IMAGES
      */
     
-    static let kDefaultGif:String = "wave-chat"
+    static let kDefaultGif:String   = "wave-chat"
+    static let kSandwich:String     = "sandwich"
+    static let kPopBg:String        = "popBg"
     
     /*
      * MARK:- VALUES

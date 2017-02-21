@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-class ChatInput: UIView, UITextFieldDelegate {
+class ChatInput: UIView, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
     
     let kChatInputHeight:CGFloat = 50.0
+    var nav: NavController?
     
     var containerView: UICollectionView! {
         didSet {
@@ -43,11 +44,25 @@ class ChatInput: UIView, UITextFieldDelegate {
         return button
     }()
     
+    lazy var menuBtn: UIButton! = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "sandwich"), for: .normal)
+        button.addTarget(self, action: #selector(onMenu(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var pop: PopOver! = {
+       let view = PopOver(frame: CGRect.zero)
+        return view
+    }()
+    
     var isKeyboardShowing: Bool = false,
         keyboardFrame: CGRect = CGRect.zero
     
     typealias ChatInputOnMessage = (String?) -> Void
     var onMessage: ChatInputOnMessage = { message in }
+    
+    private var menuShown:Bool = false
     
     // MARK:- Init
     override init(frame: CGRect) {
@@ -60,6 +75,7 @@ class ChatInput: UIView, UITextFieldDelegate {
         
         self.addSubview(input)
         self.addSubview(sendBtn)
+        self.addSubview(menuBtn)
         sendBtn.isHidden = true
         sendBtn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
     }
@@ -75,8 +91,9 @@ class ChatInput: UIView, UITextFieldDelegate {
         let h: CGFloat = self.frame.size.height
         let pad: CGFloat = 10.0
         let btnS: CGFloat = kChatInputHeight - pad * 2
+        menuBtn.frame = CGRect(x: pad, y: pad, width: btnS, height: btnS)
         sendBtn.frame = CGRect(x: w - (pad + btnS), y: pad, width: btnS, height: btnS)
-        input.frame = CGRect(x: pad, y: pad, width: w - (pad * 2 + btnS + 5), height: h - pad * 2)
+        input.frame = CGRect(x: menuBtn.frame.maxX + 5, y: pad, width: w - (pad * 2 + btnS * 2 + 10), height: h - pad * 2)
     }
     
     // MARK:- Private
@@ -86,6 +103,21 @@ class ChatInput: UIView, UITextFieldDelegate {
         if input.text != nil && (input.text?.characters.count)! > 1 {
             self.onMessage(input.text)
             input.text = ""
+        }
+    }
+    
+    func onMenu(_ sender : UIButton) {
+        input.resignFirstResponder()
+        
+        if menuShown == true {
+            self.hideMenu()
+        }
+        else {
+            menuShown = true
+            self.nav?.topViewController?.view.addSubview(pop)
+            pop.parentRect = self.frame
+            pop.fetchMenu()
+            pop.frame = CGRect(x: 10, y: self.frame.minY - 110, width: 100, height: 100)
         }
     }
     
@@ -115,6 +147,7 @@ class ChatInput: UIView, UITextFieldDelegate {
     }
     
     func onContainerTap() {
+        self.hideMenu()
         if input.isFirstResponder {
             input.resignFirstResponder()
         }
@@ -123,6 +156,8 @@ class ChatInput: UIView, UITextFieldDelegate {
     // MARK:- Positioning
     
     func updateKeyboardPositions() {
+        
+        self.hideMenu()
         
         if isKeyboardShowing {
             self.frame.origin = CGPoint(x: 0, y: (self.superview?.frame.size.height)! - (keyboardFrame.size.height + kChatInputHeight))
@@ -153,6 +188,16 @@ class ChatInput: UIView, UITextFieldDelegate {
     }
     
     // MARK:- Animations
+    
+    func hideMenu() {
+        menuShown = false
+        UIView.animate(withDuration: 2.0, animations: {
+            
+            self.pop.removeFromSuperview()
+            self.pop.menuItems = []
+            self.pop.frame = CGRect.zero
+        }, completion: nil)
+    }
     
     func animateSendBtn() {
         

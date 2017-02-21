@@ -21,6 +21,7 @@
 		AC12680D1E2326B000F3344B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680C1E2326B000F3344B /* ChatView.swift */; };
 		AC1268101E232FA400F3344B /* DataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12680F1E232FA400F3344B /* DataMgr.swift */; };
 		AC1268121E23338F00F3344B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1268111E23338F00F3344B /* ChatCell.swift */; };
+		AC3E6A641E5CA38B002E30EB /* PopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3E6A631E5CA38B002E30EB /* PopCell.swift */; };
 		AC48C7E41E490ACE00735FD4 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48C7E31E490ACE00735FD4 /* Loading.swift */; };
 		AC48C7E61E49315E00735FD4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48C7E51E49315E00735FD4 /* Alert.swift */; };
 		AC5C221E1E4257580009A8E2 /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C221D1E4257580009A8E2 /* LoginInput.swift */; };
@@ -32,6 +33,7 @@
 		AC77BEF01E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC77BEEF1E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf */; };
 		AC77BEF21E5BA30000823BE7 /* QuickReplies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEF11E5BA30000823BE7 /* QuickReplies.swift */; };
 		AC77BEF41E5BB69A00823BE7 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEF31E5BB69A00823BE7 /* Reply.swift */; };
+		AC77BEF81E5BD74500823BE7 /* PopOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEF71E5BD74500823BE7 /* PopOver.swift */; };
 		AC78D1A51E4BE7230076D211 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A41E4BE7230076D211 /* SplashVC.swift */; };
 		AC78D1A71E4BE72F0076D211 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A61E4BE72F0076D211 /* SplashView.swift */; };
 		AC7AFBED1E5A6D4F00F97EE9 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AFBEC1E5A6D4F00F97EE9 /* MenuCell.swift */; };
@@ -65,6 +67,7 @@
 		AC12680C1E2326B000F3344B /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AC12680F1E232FA400F3344B /* DataMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMgr.swift; sourceTree = "<group>"; };
 		AC1268111E23338F00F3344B /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		AC3E6A631E5CA38B002E30EB /* PopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopCell.swift; sourceTree = "<group>"; };
 		AC48C7E31E490ACE00735FD4 /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		AC48C7E51E49315E00735FD4 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		AC5C221D1E4257580009A8E2 /* LoginInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		AC77BEEF1E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Bold.otf"; path = "../../../../Downloads/FONTS/SanFrancisco/SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
 		AC77BEF11E5BA30000823BE7 /* QuickReplies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplies.swift; sourceTree = "<group>"; };
 		AC77BEF31E5BB69A00823BE7 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
+		AC77BEF71E5BD74500823BE7 /* PopOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOver.swift; sourceTree = "<group>"; };
 		AC78D1A41E4BE7230076D211 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		AC78D1A61E4BE72F0076D211 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		AC78D1AA1E4BEA420076D211 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -220,6 +224,8 @@
 				AC77BEED1E5B372D00823BE7 /* GalleryItem.swift */,
 				AC77BEF11E5BA30000823BE7 /* QuickReplies.swift */,
 				AC77BEF31E5BB69A00823BE7 /* Reply.swift */,
+				AC77BEF71E5BD74500823BE7 /* PopOver.swift */,
+				AC3E6A631E5CA38B002E30EB /* PopCell.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 				AC78D1A71E4BE72F0076D211 /* SplashView.swift in Sources */,
 				ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */,
 				AC77BEF21E5BA30000823BE7 /* QuickReplies.swift in Sources */,
+				AC3E6A641E5CA38B002E30EB /* PopCell.swift in Sources */,
 				AC48C7E61E49315E00735FD4 /* Alert.swift in Sources */,
 				AC77BEF41E5BB69A00823BE7 /* Reply.swift in Sources */,
 				ACE0EDA61E2485FA00581D4F /* ChatTextField.swift in Sources */,
@@ -400,6 +407,7 @@
 				AC5C22201E425AEB0009A8E2 /* LoginTextField.swift in Sources */,
 				AC5C221E1E4257580009A8E2 /* LoginInput.swift in Sources */,
 				ACE0ED9F1E2400B700581D4F /* BotMgr.swift in Sources */,
+				AC77BEF81E5BD74500823BE7 /* PopOver.swift in Sources */,
 				AC12680D1E2326B000F3344B /* ChatView.swift in Sources */,
 				AC1267F31E22EE2D00F3344B /* AppDelegate.swift in Sources */,
 				AC48C7E41E490ACE00735FD4 /* Loading.swift in Sources */,

@@ -14,6 +14,7 @@ class NetworkMgr {
     
     let MESSAGE_API_URL = "http://localhost:3000/bot/send?text="
     let PAYLOAD_API_URL = "http://localhost:3000/bot/payload?text="
+    let MENU_API_URL    = "http://localhost:3000/bot/menu"
     let SIGN_UP_URL = "http://localhost:3000/user"
     let POST_CLIENT_URL = "http://localhost:3000/clients"
     let AUTHORIZE_TRANSACTION_URL = "http://localhost:3000/oauth2/authorize?"
@@ -31,6 +32,7 @@ class NetworkMgr {
     typealias NetworkMgrResCallback = (DataResponse<Any>?) -> Void
     typealias NetworkMgrStringCallback = (DataResponse<String>?) -> Void
     typealias NetworkMgrSocketCallback = (Bool) -> Void
+    typealias NetworkMgrMenuCallback = ([MenuButton?]) -> Void
     
     // MARK:- SOCKET API
     
@@ -112,6 +114,35 @@ class NetworkMgr {
                 res = "success"
             }
             callback(res)
+        }
+    }
+    
+    func fetchMenu(callback: @escaping NetworkMgrMenuCallback) {
+
+        var headers: HTTPHeaders = [:]
+        if let authorizationHeader = Request.authorizationHeader(user: DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!, password: DataMgr.sharedInstance.getKey(key: Keys.password.rawValue)!) {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        Alamofire.request(MENU_API_URL, headers: headers).responseJSON { response in
+            debugPrint("got response from Menu:")
+            //debugPrint(response)
+            var menu: [MenuButton] = []
+            if let JSON = response.result.value as? NSDictionary {
+                //debugPrint("JSON: \(JSON)")
+                if let buttons = JSON.object(forKey: "buttons") as? [NSDictionary] {
+                    //debugPrint(buttons)
+                    for obj: NSDictionary in buttons {
+                        //debugPrint(obj)
+                        let btn = MenuButton(title: obj.object(forKey: "title") as? String, payload: obj.object(forKey: "payload") as? String, url: obj.object(forKey: "url") as? String, imgUrl: obj.object(forKey: "imgUrl") as? String)
+                        menu.append(btn)
+                    }
+                }
+                callback(menu)
+            }
+            else {
+                callback(menu)
+            }
         }
     }
     
