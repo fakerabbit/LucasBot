@@ -65,6 +65,9 @@ class NetworkMgr {
                     //debugPrint("gallery: ", gallery)
                     BotMgr.sharedInstance.sendSocketGallery(buttons: gallery.object(forKey: "buttons") as! [Any], width: obj.object(forKey: "width") as! String, height: obj.object(forKey: "height") as! String)
                 }
+                else if let text = obj.object(forKey: "text") as? String {
+                    BotMgr.sharedInstance.sendSocketReplies(text: text, buttons: obj.object(forKey: "quickReplies") as! [Any], height: obj.object(forKey: "height") as! String)
+                }
             }
         }
         

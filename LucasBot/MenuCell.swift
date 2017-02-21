@@ -79,9 +79,7 @@ class MenuCell: UIView, UITextViewDelegate {
         super.layoutSubviews()
         let w = self.frame.size.width
         
-        let fixedWidth = w
-        textView.sizeThatFits(CGSize(width: w, height: CGFloat.greatestFiniteMagnitude))
-        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        let newSize = textView.sizeThatFits(CGSize(width: w, height: CGFloat.greatestFiniteMagnitude))
         var newFrame = textView.frame
         newFrame.size = CGSize(width: newSize.width, height: newSize.height)
         textView.frame = newFrame

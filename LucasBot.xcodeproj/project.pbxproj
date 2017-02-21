@@ -30,6 +30,8 @@
 		AC77BEEC1E5B368C00823BE7 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEEB1E5B368C00823BE7 /* Gallery.swift */; };
 		AC77BEEE1E5B372D00823BE7 /* GalleryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEED1E5B372D00823BE7 /* GalleryItem.swift */; };
 		AC77BEF01E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC77BEEF1E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf */; };
+		AC77BEF21E5BA30000823BE7 /* QuickReplies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEF11E5BA30000823BE7 /* QuickReplies.swift */; };
+		AC77BEF41E5BB69A00823BE7 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77BEF31E5BB69A00823BE7 /* Reply.swift */; };
 		AC78D1A51E4BE7230076D211 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A41E4BE7230076D211 /* SplashVC.swift */; };
 		AC78D1A71E4BE72F0076D211 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78D1A61E4BE72F0076D211 /* SplashView.swift */; };
 		AC7AFBED1E5A6D4F00F97EE9 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AFBEC1E5A6D4F00F97EE9 /* MenuCell.swift */; };
@@ -72,6 +74,8 @@
 		AC77BEEB1E5B368C00823BE7 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
 		AC77BEED1E5B372D00823BE7 /* GalleryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryItem.swift; sourceTree = "<group>"; };
 		AC77BEEF1E5B5CB600823BE7 /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SanFranciscoDisplay-Bold.otf"; path = "../../../../Downloads/FONTS/SanFrancisco/SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
+		AC77BEF11E5BA30000823BE7 /* QuickReplies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplies.swift; sourceTree = "<group>"; };
+		AC77BEF31E5BB69A00823BE7 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		AC78D1A41E4BE7230076D211 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		AC78D1A61E4BE72F0076D211 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		AC78D1AA1E4BEA420076D211 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -214,6 +218,8 @@
 				AC7AFBEC1E5A6D4F00F97EE9 /* MenuCell.swift */,
 				AC77BEEB1E5B368C00823BE7 /* Gallery.swift */,
 				AC77BEED1E5B372D00823BE7 /* GalleryItem.swift */,
+				AC77BEF11E5BA30000823BE7 /* QuickReplies.swift */,
+				AC77BEF31E5BB69A00823BE7 /* Reply.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -380,7 +386,9 @@
 				ACFB9A5E1E2DD38D00A164A1 /* RedTextField.swift in Sources */,
 				AC78D1A71E4BE72F0076D211 /* SplashView.swift in Sources */,
 				ACFB9A5A1E2DC1C900A164A1 /* NavController.swift in Sources */,
+				AC77BEF21E5BA30000823BE7 /* QuickReplies.swift in Sources */,
 				AC48C7E61E49315E00735FD4 /* Alert.swift in Sources */,
+				AC77BEF41E5BB69A00823BE7 /* Reply.swift in Sources */,
 				ACE0EDA61E2485FA00581D4F /* ChatTextField.swift in Sources */,
 				AC78D1A51E4BE7230076D211 /* SplashVC.swift in Sources */,
 				ACFB9A4A1E2D975900A164A1 /* LoginVC.swift in Sources */,

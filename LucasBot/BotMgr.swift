@@ -24,7 +24,7 @@ class BotMgr {
     
     func initBot() {
         self.animateLoading(anim: true)
-        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil, quickReply: nil)
         self.onMessage(message)
         self.startQueue()
         NetworkMgr.sharedInstance.initSocket() { connected in
@@ -39,29 +39,29 @@ class BotMgr {
     // MARK:- API
     
     func sendMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil, quickReply: nil)
         self.onMessage(message)
         self.sendMessageToBot(message: msg)
     }
     
     func sendPayload(button: MenuButton) {
-        let message = Message(msgId: NSUUID().uuidString, text: button.title, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: button.title, type: "user", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil, quickReply: nil)
         self.onMessage(message)
         self.sendPayloadToBot(message: button.payload!)
     }
     
     func sendSocketMessage(msg: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: msg, type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil, quickReply: nil)
         self.processBotMessage(message: message)
     }
     
     func sendSocketImage(imgUrl: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: imgUrl, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil, quickReply: nil)
         self.processBotMessage(message: message)
     }
     
     func sendSocketGif(url: String, width: String, height: String) {
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: url, width: width, height: height, typing: false, menu: nil, gallery: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: url, width: width, height: height, typing: false, menu: nil, gallery: nil, quickReply: nil)
         self.processBotMessage(message: message)
     }
     
@@ -78,7 +78,7 @@ class BotMgr {
             }
         }
         let menu = Menu(title: title, buttons: menuButtons)
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: width, height: heightValue.description, typing: false, menu: menu, gallery: nil)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: width, height: heightValue.description, typing: false, menu: menu, gallery: nil, quickReply: nil)
         self.processBotMessage(message: message)
     }
     
@@ -94,7 +94,21 @@ class BotMgr {
             }
         }
         let gallery = Menu(title: nil, buttons: menuButtons)
-        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: width, height: height, typing: false, menu: nil, gallery: gallery)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: width, height: height, typing: false, menu: nil, gallery: gallery, quickReply: nil)
+        self.processBotMessage(message: message)
+    }
+    
+    func sendSocketReplies(text: String, buttons: [Any], height: String) {
+        var replyButtons: [MenuButton] = []
+        let count = buttons.count
+        for i in 0 ..< count {
+            if let b = buttons[i] as? NSDictionary {
+                let mb = MenuButton(title: b.object(forKey: "title") as! String?, payload: b.object(forKey: "payload") as! String?, url: b.object(forKey: "url") as! String?, imgUrl: b.object(forKey: "imageUrl") as! String?)
+                replyButtons.append(mb)
+            }
+        }
+        let quickReply = Menu(title: text, buttons: replyButtons)
+        let message = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: height, typing: false, menu: nil, gallery: nil, quickReply: quickReply)
         self.processBotMessage(message: message)
     }
     
@@ -285,7 +299,7 @@ class BotMgr {
     }
     
     private func processBotMessage(message: Message) {
-        let typing = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: "35", typing: true, menu: nil, gallery: nil)
+        let typing = Message(msgId: NSUUID().uuidString, text: "", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: "35", typing: true, menu: nil, gallery: nil, quickReply: nil)
         self.queue.append(typing)
         self.queue.append(message)
     }

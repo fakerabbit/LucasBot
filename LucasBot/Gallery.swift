@@ -76,8 +76,9 @@ class Gallery: UIView {
         let h = self.frame.size.height
         scrollView.frame = CGRect(x: 0, y: 0, width: w, height: h)
         var x: CGFloat = indent
-        for i: GalleryItem in items {
-            i.frame = CGRect(x: x, y: 0, width: itemW, height: h)
+        for i in 0 ..< items.count {
+            let item: GalleryItem = items[i]
+            item.frame = CGRect(x: x, y: 0, width: itemW, height: h)
             x += itemW + pad
         }
         scrollView.contentSize = CGSize(width: x, height: h)

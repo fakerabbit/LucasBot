@@ -168,11 +168,15 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
         cell.menu = message.menu
         cell.gallery = message.gallery
+        cell.quickReply = message.quickReply
         
         cell.menuView.onButton = { button in
             self.onButton(button)
         }
         cell.galleryView.onButton = { button in
+            self.onButton(button)
+        }
+        cell.repliesView.onButton = { button in
             self.onButton(button)
         }
         
@@ -188,6 +192,18 @@ class ChatView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UI
                 size = CGSize(width: collectionView.frame.size.width - pad, height: 250)
                 message?.width = "167"
                 messages[indexPath.row] = message!
+            }
+            else if let quickReply: Menu = message!.quickReply {
+                let label = ChatTextView(frame: CGRect.zero)
+                label.font = Utils.chatFont()
+                label.text = quickReply.title
+                label.sizeToFit()
+                size = label.sizeThatFits(CGSize(width: collectionView.frame.size.width/1.5, height: CGFloat.greatestFiniteMagnitude))
+                size.width = collectionView.frame.size.width - pad
+                let h = NumberFormatter().number(from: message!.height!)!.floatValue
+                //var height: CGFloat = CGFloat(h) * CGFloat((quickReply.buttons?.count)!)
+                let height = size.height + Utils.interBubbleSpace + CGFloat(h) + 20
+                size.height = height
             }
             else if let height: String = message!.height {
                 let h = NumberFormatter().number(from: height)!.floatValue

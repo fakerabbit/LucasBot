@@ -27,6 +27,7 @@ struct Message {
     var typing: Bool = false
     var menu: Menu?
     var gallery: Menu?
+    var quickReply: Menu?
 }
 
 struct Menu {

@@ -166,8 +166,24 @@ class ChatCell: UICollectionViewCell {
         }
     }
     
+    var quickReply: Menu! {
+        didSet {
+            if quickReply != nil {
+                self.repliesView.content = quickReply
+                self.repliesView.isHidden = false
+                self.textView.isHidden = true
+            }
+            else {
+                self.repliesView.isHidden = true
+                self.repliesView.content = nil
+                self.textView.isHidden = self.text.characters.count == 0
+            }
+        }
+    }
+    
     let menuView = MenuCell(frame: CGRect.zero)
     let galleryView = Gallery(frame: CGRect.zero)
+    let repliesView = QuickReplies(frame: CGRect.zero)
     private let textView: ChatTextView = ChatTextView(frame: CGRect.zero)
     private let imageView: UIImageView = UIImageView(frame: CGRect.zero)
     private let gif: UIWebView = UIWebView(frame: CGRect.zero)
@@ -207,6 +223,7 @@ class ChatCell: UICollectionViewCell {
         
         self.contentView.addSubview(menuView)
         self.contentView.addSubview(galleryView)
+        self.contentView.addSubview(repliesView)
         
         isUser = false
         text = ""
@@ -240,5 +257,7 @@ class ChatCell: UICollectionViewCell {
         menuView.frame = CGRect(x: avatar.frame.maxX + pad, y: 0, width: gifWidth, height: h)
         galleryView.frame = CGRect(x: 0, y: 0, width: w, height: h)
         //galleryView.indent = avatar.frame.maxX + pad
+        repliesView.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        repliesView.indent = avatar.frame.maxX + pad
     }
 }
