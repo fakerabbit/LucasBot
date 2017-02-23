@@ -81,6 +81,8 @@ class NetworkMgr {
     /// sendMessage(msg: String): Sends a message to Backend
     func sendMessage(msg: String, callback: @escaping NetworkMgrReqCallback) {
         
+        NetworkMgr.socket.emit("connect", [])
+        
         let msgUrl = MESSAGE_API_URL + msg.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         var headers: HTTPHeaders = [:]
         if let authorizationHeader = Request.authorizationHeader(user: DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!, password: DataMgr.sharedInstance.getKey(key: Keys.password.rawValue)!) {
@@ -100,6 +102,8 @@ class NetworkMgr {
     
     func sendPayload(msg: String, callback: @escaping NetworkMgrReqCallback) {
         
+        NetworkMgr.socket.emit("connect", [])
+        
         let msgUrl = PAYLOAD_API_URL + msg.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed)!
         var headers: HTTPHeaders = [:]
         if let authorizationHeader = Request.authorizationHeader(user: DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!, password: DataMgr.sharedInstance.getKey(key: Keys.password.rawValue)!) {
@@ -118,6 +122,8 @@ class NetworkMgr {
     }
     
     func fetchMenu(callback: @escaping NetworkMgrMenuCallback) {
+        
+        NetworkMgr.socket.emit("connect", [])
 
         var headers: HTTPHeaders = [:]
         if let authorizationHeader = Request.authorizationHeader(user: DataMgr.sharedInstance.getKey(key: Keys.email.rawValue)!, password: DataMgr.sharedInstance.getKey(key: Keys.password.rawValue)!) {
