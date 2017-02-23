@@ -21,17 +21,18 @@ class BotMgr {
     private var queue:[Message] = []
     var currentView: UIView?
     private var loading: Loading!
+    private var online: Bool = false
     
     func initBot() {
         self.animateLoading(anim: true)
         let message = Message(msgId: NSUUID().uuidString, text: "Calling bot...", type: "bot", sessionId: NetworkMgr.sharedInstance.sessionId, imgUrl: nil, giphy: nil, width: nil, height: nil, typing: false, menu: nil, gallery: nil, quickReply: nil)
         self.onMessage(message)
         self.startQueue()
-        NetworkMgr.sharedInstance.initSocket() { connected in
-            self.animateLoading(anim: false)
-            if connected == true {
-                self.sendMessageToBot(message: "Hello")
-                //Wit.sharedInstance().interpretString("Hello", customData: nil)
+        NetworkMgr.sharedInstance.initSocket() { [weak self] connected in
+            self?.animateLoading(anim: false)
+            if connected == true && self?.online == false {
+                self?.online = true
+                self?.sendMessageToBot(message: "Hello")
             }
         }
     }
@@ -70,7 +71,8 @@ class BotMgr {
         let count = buttons.count
         Utils.menuItemHeight = height
         Utils.menuItemWidth = width
-        let heightValue = ((height as NSString).intValue + Int(Utils.interBubbleSpace)) * (count + 1)
+        var heightValue = ((height as NSString).intValue + Int(Utils.interBubbleSpace)) * (count + 1)
+        heightValue += 10
         for i in 0 ..< count {
             if let b = buttons[i] as? NSDictionary {
                 let mb = MenuButton(title: b.object(forKey: "title") as! String?, payload: b.object(forKey: "payload") as! String?, url: b.object(forKey: "url") as! String?, imgUrl: nil)
