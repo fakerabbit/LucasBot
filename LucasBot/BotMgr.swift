@@ -34,6 +34,9 @@ class BotMgr {
                 self?.online = true
                 self?.sendMessageToBot(message: "Hello")
             }
+            else if connected == true {
+                self?.sendMessageToBot(message: "conexion bot")
+            }
         }
     }
     
