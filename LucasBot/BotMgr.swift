@@ -32,9 +32,11 @@ class BotMgr {
             self?.animateLoading(anim: false)
             if connected == true && self?.online == false {
                 self?.online = true
+                debugPrint("sending hello...")
                 self?.sendMessageToBot(message: "Hello")
             }
             else if connected == true {
+                debugPrint("sending conexion bot...")
                 self?.sendMessageToBot(message: "conexion bot")
             }
         }

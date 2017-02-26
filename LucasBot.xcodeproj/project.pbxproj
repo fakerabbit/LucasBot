@@ -541,8 +541,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.idevcode.lucasbot;
 				PRODUCT_NAME = TriviaBot;
-				PROVISIONING_PROFILE = "7388e728-d936-44fd-8ce8-ca3789a22e93";
-				PROVISIONING_PROFILE_SPECIFIER = MirkoDevs;
+				PROVISIONING_PROFILE = "a79dde43-c0da-420e-a063-4165b43b88a7";
+				PROVISIONING_PROFILE_SPECIFIER = MirkoDev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

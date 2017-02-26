@@ -57,7 +57,7 @@ class Alert: UIView {
         super.sizeToFit()
         let w = UIScreen.main.bounds.size.width
         let h = UIScreen.main.bounds.size.height
-        var size = CGSize(width: w/1.5, height: 0)
+        var size = CGSize(width: w/1.8, height: 0)
         size = self.textView.sizeThatFits(CGSize(width: size.width - 20, height: CGFloat.greatestFiniteMagnitude))
         self.frame = CGRect(x: w/2 - size.width/2, y: h/2 - size.height/2, width: size.width, height: size.height + 20)
     }
